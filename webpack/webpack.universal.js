@@ -122,7 +122,7 @@ var sharedPlugins = [
   //   comments: false,
 
   // }),
-  
+
   new ContextReplacementPlugin(
     // The (\\|\/) piece accounts for path separators in *nix and Windows
     /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
@@ -259,8 +259,10 @@ function setTypeScriptAlias(tsConfig, config) {
   newConfig.resolve = newConfig.resolve || {};
   newConfig.resolve.alias = newConfig.resolve.alias || {};
   var tsPaths = tsConfig.compilerOptions.paths;
-  for (var prop in tsPaths) {
-    newConfig.resolve.alias[prop]  = root(tsPaths[prop][0]);
+  if(tsPaths.length){
+    for (var prop in tsPaths) {
+      newConfig.resolve.alias[prop]  = root(tsPaths[prop][0]);
+    }
   }
   return newConfig;
 }

@@ -43,8 +43,8 @@
             <span class="nav-label">Practices</span>
           </a>
         </li>
-        <li class="">
-          <a href="javascript:void(0)">
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a [routerLink]="['./preferences']" (click)="select()">
             <i class="material-icons">brightness_7</i>
             <span class="nav-label">Preferences</span>
           </a>

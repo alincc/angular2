@@ -14,6 +14,9 @@ import {
   PracticeComponent
 } from '../+practices';
 
+import {
+    PreferencesComponent
+} from './preferences';
 
 export const DashboardRoutes: Routes = [
   {
@@ -34,5 +37,9 @@ export const DashboardRoutes: Routes = [
     path: 'practices/:id',
     component: PracticeComponent,
     //canDeactivate: [UnsavedChangesGuard]
-  }
+  },
+  {
+    path: 'preferences',
+    component: PreferencesComponent,
+  },
 ];

@@ -49,6 +49,7 @@ app.get('/verify-account/national-id', ngApp);
 app.get('/dashboard/profile', ngApp);
 app.get('/dashboard/practices', ngApp);
 app.get('/dashboard/practices/:id', ngApp);
+app.get('/dashboard/preferences', ngApp);
 app.get('/privacy-policy', ngApp);
 app.get('/terms-of-use', ngApp);
 

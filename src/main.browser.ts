@@ -38,6 +38,11 @@ import {
 import {
   ProfileComponent
 } from "./app/+dashboard/profile/profile.component";
+
+import {
+    PreferencesComponent
+} from "./app/+dashboard/preferences/preferences.component";
+
 import {
   VDocumentUploaderComponent,
   TagInputComponent,
@@ -95,7 +100,7 @@ import {
   TryFrontDeskComponent
 } from "./app/+dashboard/practices";
 import {LocationEditComponent} from "./app/+practices/practice/forms/location-edit/location-edit.component";
-//TODO this is really bloated. Some of this should be moved to their own feature delarations
+//TODO this is really bloated. Some of this should be moved to their own feature declarations
 export function main() {
   @NgModule({
     bootstrap: [App],
@@ -162,7 +167,8 @@ export function main() {
       PatientVolumeComponent,
       SeachesLikeYouComponent,
       TryFrontDeskComponent,
-      LocationEditComponent
+      LocationEditComponent,
+      PreferencesComponent
     ],
     imports: [
       AppModule,

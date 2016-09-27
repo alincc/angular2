@@ -56,6 +56,7 @@ import {AvatarComponent,HighlightDirective} from "./app/shared/utility_component
 import {MapInputComponent} from "./app/shared/custom-input-controls/map/map.component";
 import {MultipleFilesUploaderComponent} from "./app/shared/custom-input-controls/multiple-files-uploader/multiple-files-uploader.component";
 import {PracticesComponent} from "./app/+practices/practices.component";
+import {PreferencesComponent} from "./app/+dashboard/preferences/preferences.component";
 import {
     MedicalComponent,
     NationalidComponent,
@@ -110,6 +111,7 @@ import {ImageCropperComponent} from "./app/shared/img-cropper/src/imageCropperCo
     PracticeAvailabilityComponent,
     PersonalComponent,
     ProfileComponent,
+    PreferencesComponent,
     PlansComponent,
     //AnalyticsOn,
     VDocumentUploaderComponent,
