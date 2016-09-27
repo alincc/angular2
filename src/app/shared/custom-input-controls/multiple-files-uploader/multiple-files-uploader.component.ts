@@ -26,12 +26,18 @@ export class MultipleFilesUploaderComponent implements ControlValueAccessor,OnIn
   //by the Control Value Accessor
   private _onTouchedCallback: () => void = noop;
   private _onChangeCallback: (_: any) => void = noop;
+  isDisplay:boolean;
 
   @Input() minFilesAllowed: number = 1;
 
+  @Input() 
+  set display(display:boolean){
+    console.log(display);
+    this.isDisplay = display;
+  }
+
   numberOfControls: number[];
   files: string[] = [];
-
   constructor() {
   }
 
@@ -41,8 +47,9 @@ export class MultipleFilesUploaderComponent implements ControlValueAccessor,OnIn
 
   //From ControlValueAccessor interface
   writeValue(value: any) {
-    if (value)
+    if (value){
       this.files = value;
+    }
   }
 
   //From ControlValueAccessor interface

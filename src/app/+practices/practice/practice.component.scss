@@ -107,6 +107,19 @@ li.photo
   color: $ch-slate;
   font-weight: 400;
 }
-
+.photos{
+  h4{
+    display: flex;
+    align-items: center;
+    i{
+      border-radius: 50%;
+      border: 2px solid;
+      font-size: 17px;
+      margin-left: 10px;
+      color: #94bf30;
+      cursor: pointer;
+    }
+  }
+}
 
 

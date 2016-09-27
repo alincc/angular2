@@ -129,11 +129,12 @@ export class UserService {
       return {
         id: practice.id,
         name: practice.name,
+        logo: practice.logo,
         physical_address: practice.physical_address,
         phone: practice.phone,
         mobile_phone: practice.mobile_phone,
         email: practice.email,
-        services: [],
+        services: practice.services,
         photos: practice.photos,
         overview: practice.overview,
         geo_location: {

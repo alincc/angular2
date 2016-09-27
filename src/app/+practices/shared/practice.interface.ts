@@ -14,4 +14,5 @@ export interface practiceInterface{
   ch_url?: string;
   facebook_page?: string;
   website?: string;
+  logo?: string;
 }

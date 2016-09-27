@@ -1,4 +1,4 @@
-import {Component, Output, EventEmitter} from '@angular/core';
+import {Component, Output, EventEmitter,Input} from '@angular/core';
 import {S3uploaderService, UploadDirective} from "../../s3uploader";
 
 @Component({
@@ -16,9 +16,13 @@ export class SingleFileUploadComponent {
   progress: number = 0;
   inProgress: boolean = false;
   fileurl: string = '';
-
+  showDropzone = true;
   @Output() fileUploaded = new EventEmitter();
   @Output() fileRemoved = new EventEmitter();
+
+  @Input() set existFile(file: string){
+    this.fileurl = file;
+  }
 
   constructor(private s3Upload: S3uploaderService) {
   }
@@ -43,9 +47,9 @@ export class SingleFileUploadComponent {
       this.inProgress = true;
       this.progress = Math.floor((res.progress / res.total) * 100);
       if (res.status === 'COMPLETE') {
-        this.fileurl = res.finalUrl;
         this.inProgress = false;
-        this.fileUploaded.emit(this.fileurl);
+        this.fileUploaded.emit(res.finalUrl);
+        //this.fileurl = res.finalUrl;
       }
     })
 

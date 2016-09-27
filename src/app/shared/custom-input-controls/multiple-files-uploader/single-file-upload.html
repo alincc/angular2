@@ -1,9 +1,24 @@
-<div class="file-control" s3upload>
+<div s3upload class="dropzone-wrap">
 
 	<!-- Default file on display -->
 	<div *ngIf="!fileurl">
 		<input type="file" (change)="onFileSelect($event)" multiple="false"/>
-		<i class="material-icons">add_circle_outline</i>
+
+		<div class="file-control" *ngIf="!showDropzone">
+			<i class="material-icons">add_circle_outline</i>
+		</div>
+
+		<div class="dropzone" [hidden]="!showDropzone">
+            <div class="dz-message needsclick" (click)="fileInput.click()">
+              <p class="text-center">
+                <i class="material-icons">cloud_upload</i><br/>
+                <span class="note">Drag & Drop</span><br/>
+                <span class="click-to-upload">Any .jpg, .png, or 
+                <a href="javascript:void(0)" class="link">Browse</a></span>
+              </p>
+            </div>
+        </div>
+
 	</div>
 
 	<!-- Upload in progress -->
@@ -21,7 +36,7 @@
 	<div class="" *ngIf="fileurl">
 		<img src="{{fileurl}}"/>
 		<span class="action" (click)="removeUpload()">
-			<i class="material-icons">clear</i>
+			<i class="material-icons">delete</i>
 		</span>
 	</div>
 

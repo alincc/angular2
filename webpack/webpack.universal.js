@@ -108,20 +108,21 @@ var ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 
 var sharedPlugins = [
   //new DedupePlugin(),
-  new UglifyJsPlugin({
-    // beautify: true, //debug
-    // mangle: false, //debug
-    mangle: true, //prod
-    compress: {
-      screw_ie8: true,
-      keep_fnames: true,
-      // drop_debugger: false,
-      dead_code: true,
-      unused: true
-    },
-    comments: false,
+  // new UglifyJsPlugin({
+  //   // beautify: true, //debug
+  //   // mangle: false, //debug
+  //   mangle: true, //prod
+  //   compress: {
+  //     screw_ie8: true,
+  //     keep_fnames: true,
+  //     // drop_debugger: false,
+  //     dead_code: true,
+  //     unused: true
+  //   },
+  //   comments: false,
 
-  }),
+  // }),
+  
   new ContextReplacementPlugin(
     // The (\\|\/) piece accounts for path separators in *nix and Windows
     /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,

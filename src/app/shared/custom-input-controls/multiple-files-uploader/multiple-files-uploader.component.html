@@ -1,8 +1,20 @@
-<div>
-	<ul class="file-controls-list">
-		<li *ngFor="let a of numberOfControls; let index = index" class="file-control-item">
+<div class="">
+	<!-- <ul class="file-controls-list">
+		<li *ngFor="let a of numberOfControls; let index = index" class="file-control-item"> -->
+		<!-- Display controllers if Number of controls to display are provide -->
+		<div *ngIf="numberOfControls > 1">
+			<ch-single-file-uploader (fileUploaded)="onFileUploaded($event)" *ngFor="let a of numberOfControls; let index = e" (fileRemoved)="removeFile($event)"></ch-single-file-uploader>
+		</div>
+
+		<!--Display exist files -->
+		<ch-single-file-uploader (fileUploaded)="onFileUploaded($event)" (fileRemoved)="removeFile($event)" *ngFor="let a of files; let index = e" [existFile]="a"></ch-single-file-uploader>
+
+		<!-- Always display a sigle input file -->
+		<div *ngIf="!isDisplay">
 			<ch-single-file-uploader (fileUploaded)="onFileUploaded($event)" (fileRemoved)="removeFile($event)"></ch-single-file-uploader>
-		</li>
-	</ul>
+		</div>
+
+		<!-- </li>
+	</ul> -->
   <div class="clearfix"></div>
 </div>

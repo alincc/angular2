@@ -122,26 +122,41 @@ export class ApiService {
   /*
   |
   | Send a get request to the server
-  | @returns Observable
+  | @returns Promise
   */
   get(endpoint: string, params?: any) : any{
+    return this.sendGetRequest(endpoint,params).toPromise();
+  }
+
+  sendGetRequest(endpoint: string, params?: any){
     this.setAccessToken();
     let url = this.apiBaseUrl+endpoint;
-    let qParams = new URLSearchParams();
+    let qParams = new URLSearchParams(JSON.stringify(params));
+    return this.http.get(url,
+      {
+        headers: this.httpHeaders,
+        search: qParams
+      })
+      .map(this.extractData);
+  }
 
-  	return this.http.get(url,
-  		{
-  			headers: this.httpHeaders
-  		})
-  		.map(this.extractData)
-      .toPromise();
+  getAsObservable(endpoint: string, params?: any){
+    return this.sendGetRequest(endpoint,params);
+  }
+
+  /*
+  |
+  | Send a get request to the server and return as Observable
+  | @returns Observable
+  */
+  getAsObservableable(endpoint: string, params?: any){
 
   }
 
   /*
   |
   | Send a post request to the server
-  | @returns Observable
+  | @returns Promise
   */
   post(endpoint : string , params : any) : any{
     this.setAccessToken();

@@ -8,9 +8,22 @@ export class PracticeService {
 
   }
 
-  getPractices(){
-  	return this.apiService.get('practices?limit=200');
+  getPractices(params?:any,asObservable?:boolean){
+    if(!params){
+      params = {};
+    }
+    
+    if(!params.limit){
+      params.limit = 200;
+    }
+    
+    let endpoint = 'practices';
+    if(asObservable === true){
+      return this.apiService.getAsObservable(endpoint,params);
+    }
+  	return this.apiService.get(endpoint,params);
   }
+
   
   update(id:number,data){
     console.log(data);

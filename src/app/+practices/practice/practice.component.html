@@ -13,7 +13,7 @@
                     <div>
                       <div class="col-lg-3">
                         <div class="form-group">
-                          <ch-avatar></ch-avatar>
+                          <ch-avatar [ngModel]="practice.logo" (ngModelChange)="updateLogo($event)"></ch-avatar>
                         </div>
                       </div>
                       <div class="col-lg-9">
@@ -43,9 +43,8 @@
                         </div>
                         <div class="row">
                           <div class="col-lg-12">
-                            <div class="form-group" hoverHighlight (click)="openPracticeModal('speciality')">
-                              <ch-tag-input
-                                placeholder="+ Add your areas of expertise"></ch-tag-input>
+                            <div class="form-group" hoverHighlight>
+                              <ch-tag-input placeholder="+ Add your areas of expertise" [ngModel]="practice.services" (ngModelChange)="updateServices($event)"></ch-tag-input>
                             </div>
                           </div>
                         </div>
@@ -58,27 +57,21 @@
           </div>
 
           <div class="col-lg-12 availability-wrap row-major">
-            <ch-practice-availability (click)="openPracticeModal('location')"></ch-practice-availability>
+            <!-- <ch-practice-availability (click)="openPracticeModal('location')"></ch-practice-availability> -->
           </div>
 
-          <div class="col-lg-12">
-            <div class="col-lg-12">
-              <div class="">
-                <h4>Photos</h4>
-              </div>
-              <div class=""  hoverHighlight (click)="openPracticeModal('photos')">
-                <ul class="list-unstyled">
-                  <li class="photo"><img src="../../assets/imgs/key.png"></li>
-                  <li class="photo"><img src="../../assets/imgs/key.png"></li>
-                  <li class="photo"><img src="../../assets/imgs/key.png"></li>
-                  <li class="photo"><img src="../../assets/imgs/key.png"></li>
-                  <li class="photo"><img src="../../assets/imgs/key.png"></li>
-                </ul>
-              </div>
+          <div class="col-lg-12 photos">
+            <div class="">
+              <h4>Photos <i class="material-icons" (click)="openPracticeModal('photos')">add</i></h4>
+            </div>
+            <div class=""  hoverHighlight>
+              <ch-multiple-files-uploader 
+              [ngModel]="practice.photos" 
+              (ngModelChange)="updatePhotos($event)" [display]="'true'"></ch-multiple-files-uploader>
             </div>
           </div>
 
-          <div class="col-lg-12">
+          <div class="col-lg-12 row">
             <div class="col-lg-6">
               <h4>Web & Social Media</h4>
               <ul class="list-unstyled" hoverHighlight (click)="openPracticeModal('web')">
@@ -112,6 +105,6 @@
     </div>
   </div>
 
-  <ch-practice-forms [selectedPractice]="practice" [openForm]="openPracticeForm" (formClosed)="onFormClose($event)" [section]="practiceFormSection"></ch-practice-forms>
+  <ch-practice-forms [selectedPractice]="practice" [selectedPractice$]="practice$" [openForm]="openPracticeForm" (formClosed)="onFormClose($event)" [section]="practiceFormSection"></ch-practice-forms>
 
 </div>

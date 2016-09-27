@@ -55,6 +55,16 @@
   }
 }
 
+.practice-lookup{
+  .name{
+    color:$ch-dark;
+  }
+  .location{
+    font-size: 90%;
+    color:$ch-blue-grey;
+  }
+}
+
 .text-with-warning {
   padding-left: 40px;
   position: relative;
@@ -63,4 +73,12 @@
     position: absolute;
     left: 19px;
   }
+}
+
+/deep/ .dropzone-wrap {
+  float: left;
+  max-width: 270px;
+}
+.practice-photos-modal /deep/ .dropzone-wrap {
+  height: 227px;
 }

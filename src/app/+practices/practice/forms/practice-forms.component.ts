@@ -56,22 +56,36 @@ export class PracticeFormsComponent implements OnInit {
   modalHeader: string = "";
   formSection: string = 'new';
   modalSize: string = 'large';
-  private _practice: practiceInterface;
+  private _practice$:any;
+
+  private _practice: practiceInterface = {
+    name: '', physical_address: '', phone: '', email: '', services: [], photos: [],
+    geo_location: {
+      lat: 0.0, lng: 0.0
+    }
+  };
 
   @Input()
   set selectedPractice(practice: practiceInterface) {
-    this.modalSize = '';
     if (practice) {
       this._practice = practice;
-    } else {
-      this._practice = {
-        name: '', physical_address: '', phone: '', email: '', services: [], photos: [],
-        geo_location: {
-          lat: 0.0, lng: 0.0
-        }
-      }
     }
     this._buildForm();
+  }
+
+  @Input()
+  set selectedPractice$(practice$:any) {
+    if (practice$) {
+      this._practice$ = practice$.asObservable();
+
+      this._practice$.subscribe(practice => {
+        console.log(practice);
+        console.log("saving");
+        if(practice){
+          this._saveData(practice);
+        }
+      });
+    }
   }
 
   @Input() set section(section: string) {
@@ -99,11 +113,6 @@ export class PracticeFormsComponent implements OnInit {
       case "location":
         this.modalHeader = "Edit Location";
         break;
-
-      case "speciality":
-        this.modalHeader = "Edit Specialiaty";
-        break;
-
       case "name":
         this.modalHeader = "Edit Name";
         break;
@@ -136,6 +145,15 @@ export class PracticeFormsComponent implements OnInit {
       }
     });
 
+  }
+
+  lookupAsync = (query: string): Observable<any[]> => {
+    if (!query) {
+      return null;
+    }
+    //Get practices as observables
+    let practices = this.practiceService.getPractices({name:query},true);
+    return practices;
   }
 
   private _buildForm() {
@@ -255,7 +273,6 @@ export class PracticeFormsComponent implements OnInit {
       //Update user's practices;
       this._addPracticesToSession(res)
       this._buildForm();
-      this.closeModal();
     }).catch(error => {
       this.submissionInprogress.next(false);
       let body = error.json();
@@ -270,6 +287,10 @@ export class PracticeFormsComponent implements OnInit {
       }
 
     });
+  }
+
+  updatePhotos($event){
+    this.onSubmit(this.practiceAdditionForm.value);
   }
 
   onFormModalOpenChange($event) {

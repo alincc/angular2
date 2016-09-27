@@ -53,6 +53,9 @@ export class PracticeComponent implements OnInit {
   practice:practiceInterface = null;
   practiceFormSection:string;
   private _practiceId:number;
+  //Have practice as an observable to allow tracking of the current practice data by the form component
+  practice$:BehaviorSubject<practiceInterface> = new BehaviorSubject<practiceInterface>(null);
+
   constructor(
     private router: Router,
      private route: ActivatedRoute,
@@ -83,9 +86,7 @@ export class PracticeComponent implements OnInit {
           return false;
         });
         this.practice = practices[matchIndex];
-
-        //if not found return error and navigate back
-        
+        console.log(this.practice);
       }
     });
   }
@@ -93,6 +94,24 @@ export class PracticeComponent implements OnInit {
   openPracticeModal(section:string) {
     this.openPracticeForm = true;
     this.practiceFormSection = section;
+  }
+
+  updateLogo($event){
+    this.practice.logo = $event;
+    this.practice$.next(this.practice);
+    console.log($event);
+  }
+
+  updateServices($event){
+    this.practice.services = $event;
+    this.practice$.next(this.practice);
+    console.log($event);
+  }
+
+  updatePhotos($event){
+    console.log($event);
+    this.practice.photos = $event;
+    this.practice$.next(this.practice);
   }
   
 
