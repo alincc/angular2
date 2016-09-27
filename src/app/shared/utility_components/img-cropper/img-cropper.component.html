@@ -1,0 +1,54 @@
+<ch-modal header="Edit Portrait" [(open)]="opened" [size]="'avatar'" (openChange)="closeWindow()">
+
+  <div body>
+    <form class="img-cropper" (ngSubmit)="submit(data.image)">
+
+      <div class="column left-column">
+        <div class="row">
+          <div class="col-lg-12">
+            <img-cropper #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <p class="title">Drag frame to adjust portrait</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="file-upload">
+              <a>Upload a different photo</a>
+              <input style="cursor: pointer" id="custom-input" type="file" (change)="fileChangeListener($event)">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column right-column">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <p class="title no-margin no-padding">Your profile portrait</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 text-center result">
+            <div class="result-background">
+              <img class="rounded" [src]="data.image" *ngIf="data.image">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 result-description">
+            <span>Must be an actual picture of you! Logos, clip-art, group pictures, and digitally-altered images not allowed.</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <button class="btn btn-default no-margin save">Save</button>
+            <a class="cancel" (click)="closeWindow()">Cancel</a>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</ch-modal>

@@ -1,0 +1,6 @@
+<div>
+	<div class="combined-controls">
+		<input class="form-control country-code" [ngModel]="phone.prefix" />
+		<input class="form-control phone" [ngModel]="phone.number" maxlength="10" (focus)="formatForSubmission()" (blur)="removeTrailingZero($event)" (ngModelChange)="onPhoneChange($event)" placeholder="7XX XXX XXX" />
+	</div>
+</div>

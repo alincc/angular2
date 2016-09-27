@@ -1,0 +1,49 @@
+<div class="">
+	<div class="row">
+	    <div class="content col-lg-8 col-lg-offset-2">
+	    	<h4 class="title text-center" *ngIf="!isInDashboard">
+	    		<span class="step">Step 2.</span> National ID
+	    	</h4>
+
+	    	<div class="text-center icon">
+				<img src="../../../assets/imgs/nationalid-icon.png"/>
+			</div>
+
+	    	<p class="text-center reason">
+	    		We need to know close our doctors, please verify your personality
+	    	</p>
+
+	    	<ch-alert [type]="'danger'" [message]="serverErrorMessage"></ch-alert>
+
+	    	<form [formGroup]="nationalidForm"
+		   		(ngSubmit)="onSubmit(nationalidForm.value)">
+
+		   		<ch-v-document-uploader
+		   		[showSingle]="true"
+		   		label="Enter your National ID"
+		   		[formControl]="nationalidForm.controls['national_id']"
+		   		placeholder="Type Here" ngModel></ch-v-document-uploader>
+
+		   		<div class="row">
+				   	<div class="col-lg-8 col-lg-offset-2">
+				   		<div class="form-group">
+							<button type="submit"
+							class="btn btn-default btn-block"
+							[message]="'Updating..'"
+							[inprogress]="submissionInprogress"
+							[disabled]="!nationalidForm.valid">Verify My ID</button>
+				   		</div>
+				   	</div>
+				</div>
+
+		   	</form>
+
+		   	<div class="clearfix"></div>
+
+		   	<div>
+		   		<p class="text-center">Have problems? <a href="mailto:support@connecthealth.io"> Contact Us.</a></p>
+		   	</div>
+	    </div>
+
+	</div>
+</div>

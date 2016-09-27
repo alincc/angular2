@@ -1,0 +1,150 @@
+<div class="" [class.personal-details-view]="isInDashboard">
+  <div class="row">
+    <div class="">
+      <div class="status-indicator" *ngIf="submissionInprogress | async">
+        Saving changes..
+      </div>
+
+      <form [formGroup]="registrationForm"
+            (ngSubmit)="onSubmit(registrationForm.value)">
+
+        <!-- Form controls, displayed on onboarding screen -->
+        <div class="controls">
+          <!-- Personal details view -->
+          <div class="">
+            <div class="row">
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <ch-avatar
+                    [formControl]="registrationForm.controls['thumbnail']"></ch-avatar>
+                  <div *ngIf="registrationForm.controls['thumbnail'].hasError('required')"
+                       class="ui error message">Please upload your profile photo
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-9">
+                <div class="form-group person">
+                  <div>
+                    <p class="name">
+                      <input class="form-control display"
+                             (blur)="updateName()"
+                             [formControl]="registrationForm.controls['name']"
+                             placeholder="Add your name here"/>
+                    </p>
+                    <div class="verification-status" [chPopover]="tip" [chPopoverPlacement]="placement" [chOpen]="open"
+                         (mouseenter)="open = true">
+                      <i class="material-icons">beenhere</i>Verified Provider
+                    </div>
+                  </div>
+
+                  <p class="user-link">
+                    <a href="javascript:void(0)" class="user-link">
+                      connecthealth.io/
+                      <input class="form-control display"
+                             (blur)="updateUsername()"
+                             [formControl]="registrationForm.controls['username']"
+                             placeholder="Add your custom url here"/>
+                    </a>
+                  </p>
+
+                  <p class="greetings">
+									    <textarea class="form-control display"
+                                (blur)="updateBio()"
+                                [formControl]="registrationForm.controls['bio']"
+                                placeholder="Add your greeting text here">
+									    	{{personalDetails.bio}}
+									    </textarea>
+                  </p>
+
+                </div>
+
+                <div class="">
+
+                  <div class="row">
+                    <!-- <div class="col-lg-4">
+                                            <p class="ch-label">Specialities <i class="material-icons">help_outline</i></p>
+                                        </div>	 -->
+                    <div class="col-lg-12">
+                      <div class="form-group"
+                           [ngClass]="{'has-error': !registrationForm.controls['speciality'].valid && registrationForm.controls['speciality'].touched}">
+                        <ch-tag-input
+                          placeholder="+ Add your areas of expertise"
+                          [formControl]="registrationForm.controls['speciality']"></ch-tag-input>
+                        <p
+                          *ngIf="registrationForm.controls['speciality'].hasError('required') && registrationForm.controls['speciality'].touched"
+                          class="help-block">Speciality is required</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <template #tip>
+                <div (mouseleave)="open = false">
+                  <div style="position: absolute; width: 100%; height: 40px;top:-35px;"></div>
+                  <p style="font-size: 90%">
+                    We’ve verified this provider’s license number with the <strong>Kenya Medical Practitioners</strong>
+                    and <strong>Dentists Board.</strong>
+                  </p>
+                  <button type="button"
+                          class="btn btn-success"
+                          style="padding: 6px 16px;margin-top: 0;">Manage your documents
+                  </button>
+                </div>
+              </template>
+
+
+            </div>
+          </div>
+
+          <!-- <div class="control-item">
+
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <p class="ch-label">Phone Number <i class="material-icons">help_outline</i></p>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="form-group"
+                                [ngClass]="{'has-error': !registrationForm.controls['phone'].valid && registrationForm.controls['phone'].touched}">
+
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        autocomplete="phone"
+                                        readonly="true"
+                                        [formControl]="registrationForm.controls['phone']"
+                                        placeholder="Phone"
+                                        />
+                                    <p *ngIf="registrationForm.controls['phone'].hasError('required') && registrationForm.controls['phone'].touched"
+                                 class="help-block">Phone is required</p>
+
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <p class="ch-label">Gender</p>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="form-group"
+                                [ngClass]="{'has-error': !registrationForm.controls['gender'].valid && registrationForm.controls['gender'].touched}">
+                                    <select [formControl]="registrationForm.controls['gender']" (change)="updateGender($event.target.value)"
+                                    class="form-control">
+                                        <option value="" selected>-- Select gender -- </option>
+                                        <option value="male"> Male </option>
+                                        <option value="female"> Female</option>
+                                    </select>
+                                    <p *ngIf="registrationForm.controls['gender'].hasError('required') && registrationForm.controls['gender'].touched"
+                                 class="help-block">Gender is required</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div> -->
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+</div>

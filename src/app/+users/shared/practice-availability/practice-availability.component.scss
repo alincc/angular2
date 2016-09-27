@@ -1,0 +1,16 @@
+.map{
+	height: 350px;
+}
+.practice-a-wrapper{
+	position:relative;
+	.availability{
+		position:absolute;
+		width: 510px;
+	  	height: 260px;
+	  	border-radius: 4px;
+	  	background-color: #ffffff;
+	  	box-shadow: 0 6.5px 13.5px 0 rgba(97, 105, 81, 0.5);
+	  	right: 5%;
+    	top: 12%;
+	}
+}

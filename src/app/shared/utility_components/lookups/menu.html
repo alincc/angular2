@@ -1,0 +1,9 @@
+<ul role="presentation" class="slds-lookup__list" *ngSwitchCase="false">
+ 	<li *ngIf="noResults">
+    	<div class="slds-lookup__item--label">No results found</div>
+ 	</li>
+  	<li *ngFor="let item of suggestions; let i=index" (click)="handlePick(item)" 
+  	[ngClass]="{'slds-dropdown__item--active': i === activeIndex }">
+  		<a [id]="optionId(i)" role="option" class="slds-lookup__item-action">{{resolveLabel(item)}}</a>
+  	</li>
+</ul>

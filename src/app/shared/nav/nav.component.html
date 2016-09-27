@@ -1,0 +1,33 @@
+<header>
+  	<nav class="navbar">
+  		<div class="container">
+		    <div class="navbar-header">
+			    <a [routerLink]="['/home']" class="home-url">
+			      <span class="logo-wrap">
+			        <img src="../../assets/ch-logo.png"/>
+			      </span>
+			    </a>
+		    </div>
+
+		    <div class="navbar-collapse collapse">
+			    <ul class="nav navbar-nav navbar-right">
+					<li *ngIf="isLogged">
+						<button href="#" class="btn" (click)="logout()">
+							<i class="material-icons">account_circle</i> Logout
+						</button>
+					</li>
+					<li *ngIf="!isLogged">
+						<a [routerLink]="['/login']">
+							<i class="material-icons">account_circle</i> Login
+						</a>
+					</li>
+					<li *ngIf="!isLogged">
+						<a [routerLink]="['/signup']">
+							<i class="material-icons">account_circle</i> Register
+						</a>
+					</li>
+	    		</ul>
+			</div>
+	    </div>
+    </nav>
+</header>

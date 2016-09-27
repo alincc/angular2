@@ -1,0 +1,126 @@
+@import '../../assets/theme-kit/_variables';
+
+.navbar-static-side {
+  z-index: $zindex-navbar;
+  height: 100%;
+
+}
+
+.navbar-default {
+  background: #003552;
+  border-color: #2f4050;
+}
+
+.nav > li.active {
+  background: #062a3e;
+  &:before {
+    content: ".";
+    position: absolute;
+    top: 4%;
+    font-size: 50px;
+    left: 6px;
+    color: $ch-green;
+  }
+  a {
+    color: $ch-green !important;
+  }
+}
+
+a.unlock-pro {
+  color: $ch-blue !important;
+}
+
+.nav > li > a {
+  color: #a7b1c2;
+  font-weight: 600;
+  padding: 14px 20px 14px 25px;
+  display: flex;
+  font-size: 14px;
+  align-items: center;
+  &:hover {
+    background: none;
+    color: $ch-white;
+  }
+  i {
+    margin-right: 10px;
+  }
+}
+.backdrop{
+  display: none;
+}
+.hide-sidebar{
+  .backdrop{
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    z-index: ($zindex-navbar - 5);
+    background: rgba(0,0,0,0.3);
+  }
+}
+
+.sidebar-wrapper {
+    top: 0;
+    bottom: 0;
+    z-index: $zindex-navbar;
+    position: fixed;
+    left: $sidebar-width;
+    width: $sidebar-width;
+    height: 100%;
+    margin-left: -$sidebar-width;
+    overflow-y: auto;
+    background: $ch-dark;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    transform: translateZ(0);
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    @include mobile{
+      width: $sidebar-width;
+      left: 0;
+    }
+
+    .sidebar-nav {
+      position: absolute;
+      top: 0;
+      width: $sidebar-width;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      li {
+        text-indent: 20px;
+        line-height: 40px;
+
+        a {
+          display: block;
+          text-decoration: none;
+          color: #999999;
+
+          &:hover {
+            text-decoration: none;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.2);
+          }
+
+          &:active, &:focus {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }

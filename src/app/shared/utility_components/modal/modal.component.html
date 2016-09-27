@@ -1,0 +1,21 @@
+<div [class.ch-fade-in-open]="open" [ngClass]="[size ? 'ch-modal--' + size : '']" 
+[attr.aria-hidden]="!open" role="dialog" 
+[attr.aria-labelledby]="headingId" class="ch-modal">
+  	<div class="ch-modal__container">
+	    <div [class.ch-modal__header--empty]="!header" class="ch-modal__header">
+	      <button #closeButton type="button" (click)="close()" class="ch-modal__close">
+	       	<i class="material-icons">clear</i>
+	      </button>
+	      <h4 *ngIf="header" [id]="headingId" class="ch-text-heading--medium">{{header}}</h4>
+	      <ng-content select="[tagline]"></ng-content>
+	    </div>
+	    <div class="ch-modal__content ch-p-around--medium">
+	      <ng-content select="[body]"></ng-content>
+	    </div>
+	    <div *ngIf="footer" [class.ch-modal__footer--directional]="directional" class="ch-modal__footer">
+	      <template [ngTemplateOutlet]="footer.templateRef"></template>
+	    </div>
+  	</div>
+</div>
+<div tabindex="0" (focus)="focusFirst()"></div>
+<div [class.ch-backdrop--open]="open" class="ch-backdrop"></div>

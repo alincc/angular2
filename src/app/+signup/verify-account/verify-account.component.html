@@ -1,0 +1,46 @@
+<div class="verify-account">
+
+	<div class="container">
+		<div class="row">
+
+			<div class="col-lg-12">
+				<div class="text-center logo-wrapper">
+					<img src="../../assets/imgs/logo-white@3x.png"/>
+				</div>
+				<a (click)="logout()" href="javascript:void(0)" class="pull-right logout">Logout</a>
+			</div>
+
+			<div class="col-lg-10 col-lg-offset-1">
+				<ul class="progressbar">
+					<li [ngClass]="{active: isActive('medicallicense'),completed: isCompleted(1)}">
+						<a [routerLink]="['./medical-license']"><span>Medical License</span></a>
+					</li>
+					<li [ngClass]="{active: isActive('nationalid'),completed: isCompleted(2)}">
+						<a [routerLink]="['./national-id']"><span>National ID</span></a>
+					</li>
+					<li [ngClass]="{active: isActive('phone'),completed: isCompleted(3)}">
+						<a [routerLink]="['./phone']"><span>Verify Number</span></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="body">
+			<div class="content">
+				<router-outlet></router-outlet>
+			</div>
+
+			<div class="nav-icons">
+				<div class="icons">
+					<div class="left-icon-wrapper" *ngIf="hasPrevious">
+						<i class="material-icons" [class.active]="hasPrevious" (click)="prev()">keyboard_arrow_left</i>
+					</div>
+
+					<div class="right-icon-wrapper">
+						<i class="material-icons" [class.active]="currentStep.isReady" (click)="next()">keyboard_arrow_right</i>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

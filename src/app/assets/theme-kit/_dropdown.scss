@@ -1,0 +1,122 @@
+@import 'variables';
+@import 'mixins';
+@import 'shadows';
+
+.dropdown-menu {
+    border: 0;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+
+    .divider {
+        background-color: rgba(0, 0, 0, .12);
+    }
+
+
+    li > a{
+        font-size: $mdb-dropdown-font-size;
+        padding: 10px 20px;
+        margin: 0 5px;
+        border-radius: $border-radius-small;
+        @include transition($fast-transition-time, $transition-linear);
+
+        &:hover,
+        &:focus {
+          @include shadow-8dp();
+
+        }
+    }
+
+    li {
+        position: relative;
+        a:hover,
+        a:focus,
+        a:active {
+            background-color: $brand-primary;
+            color: #FFFFFF;
+        }
+    }
+
+    .divider{
+        margin: 5px 0;
+    }
+}
+
+@media (min-width: $screen-md-min){
+    .dropdown{
+        .dropdown-menu{
+            @include transition($fast-transition-time, $transition-linear);
+            margin-top: -20px;
+            opacity: 0;
+            visibility: hidden;
+            display: block;
+        }
+
+        &.open{
+            .dropdown-menu{
+                opacity: 1;
+                visibility: visible;
+                margin-top: 1px;
+            }
+        }
+    }
+
+}
+.slds-popover :last-child {
+    margin-bottom: 0;
+}
+.slds-popover__body {
+    position: relative;
+    padding: .5rem .75rem;
+    text-align: center;
+}
+.slds-nubbin--bottom:after {
+    box-shadow: 2px 2px 4px 0 rgba(0,0,0,.16);
+    z-index: -1;
+}
+.slds-nubbin--bottom:after {
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    transform: rotate(45deg);
+    content: '';
+    background-color: inherit;
+    left: 50%;
+    bottom: -.5rem;
+    margin-left: -.5rem;
+}
+.slds-popover {
+    position: relative;
+    border-radius: .25rem;
+    width: 250px;
+    min-height: 2rem;
+    z-index: 6000;
+    background-color: #fff;
+    display: inline-block;
+    border: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 0 7px 18px 0 rgba(177, 195, 209, 0.45);
+}
+.slds-nubbin--top:before {
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    transform: rotate(45deg);
+    content: '';
+    background-color: inherit;
+    left: 50%;
+    top: -.5rem;
+    margin-left: -.5rem;
+}
+.slds-nubbin--top:after {
+    box-shadow: -1px -1px 0 0 rgba(0,0,0,.06);
+    z-index: -1;
+}
+.slds-nubbin--top:after {
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    transform: rotate(45deg);
+    content: '';
+    background-color: inherit;
+    left: 50%;
+    top: -.5rem;
+    margin-left: -.5rem;
+}

@@ -1,0 +1,28 @@
+<div class="file-control" s3upload>
+
+	<!-- Default file on display -->
+	<div *ngIf="!fileurl">
+		<input type="file" (change)="onFileSelect($event)" multiple="false"/>
+		<i class="material-icons">add_circle_outline</i>
+	</div>
+
+	<!-- Upload in progress -->
+	<div class="photo-progress" *ngIf="inProgress">
+		<div class="c100 p{{progress}}">
+		  <span>{{progress}}%</span>
+		  <div class="slice">
+		    <div class="bar"></div>
+		    <div class="fill"></div>
+		  </div>
+		</div>
+	</div>
+
+	<!-- Uploaded or being uploaded display -->
+	<div class="" *ngIf="fileurl">
+		<img src="{{fileurl}}"/>
+		<span class="action" (click)="removeUpload()">
+			<i class="material-icons">clear</i>
+		</span>
+	</div>
+
+</div>

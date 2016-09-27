@@ -1,0 +1,52 @@
+<div class="">
+	<div class="row">
+	    <div class="content col-lg-8 col-lg-offset-2">
+	    	<h4 class="title text-center" *ngIf="!isInDashboard">
+	    		<span class="step">Step 1.</span> Verify your medical license number
+	    	</h4>
+
+	    	<div class="text-center icon">
+				<img src="../../../assets/imgs/medical-license-icon.png"/>
+			</div>
+
+	    	<p class="text-center reason">
+	    		Show your clients you’re legit. Please verify your license ID.
+	    	</p>
+
+	    	<ch-alert [type]="'danger'" [message]="serverErrorMessage"></ch-alert>
+
+	    	<form [formGroup]="medicalForm"
+		   		(ngSubmit)="onSubmit(medicalForm.value)">
+
+		   		<div class="row">
+	   				<ch-v-document-uploader
+	   				[formControl]="medicalForm.controls['medical_license']"
+	   				[showSingle]="true"
+	   				label="Enter your license number (KMPDB)"
+	   				class="col-lg-12"
+	   				placeholder="Type Here" ngModel></ch-v-document-uploader>
+		   		</div>
+
+		   		<div class="row">
+				   	<div class="col-lg-8 col-lg-offset-2">
+				   		<div class="form-group">
+							<button type="submit"
+							class="btn btn-default btn-block"
+							[message]="'Updating..'"
+							[inprogress]="submissionInprogress"
+							[disabled]="!medicalForm.valid">Verify My License</button>
+				   		</div>
+				   	</div>
+				</div>
+
+		   	</form>
+
+		   	<div class="clearfix"></div>
+
+		   	<div>
+		   		<p class="text-center">Have problems? <a  href="mailto:support@connecthealth.io"> Contact Us.</a></p>
+		   	</div>
+	    </div>
+
+	</div>
+</div>

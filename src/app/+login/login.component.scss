@@ -1,0 +1,10 @@
+@import '../assets/theme-kit/_variables';
+.forgot-link{
+	padding:20px 0;
+}
+
+.signup{
+	@include xsmobile{
+		display:block;
+	}
+}

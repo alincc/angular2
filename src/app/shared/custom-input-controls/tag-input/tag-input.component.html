@@ -1,0 +1,20 @@
+<div class="chips view" *ngIf="tags.length > 0">
+	<ch-pill (chPillRemove)="remove(tag)" *ngFor="let tag of tags">
+	  <a href="javascript:void(0)" class="remove">{{tag}}</a>
+	</ch-pill>
+</div>
+
+<button class="add-btn" type="button" (click)="openTagModal()">
+	{{placeholder}}
+</button>
+
+<ch-modal header="Add Your specialities" [(open)]="opened" [size]="size">
+
+  <div body class="speciality-modal">
+  	<ch-pill (chPillRemove)="remove(tag)" *ngFor="let tag of tags">
+	  <a href="javascript:void(0)">{{tag}}</a>
+	</ch-pill>
+	<ch-lookup [lookup]="lookup" [(pick)]="selectedItem" (pickChange)="onPickChange($event)" (valueChange)="onValueChange($event)" debounce="0" placeholder="{{placeholder}}">
+	</ch-lookup>
+  </div>
+</ch-modal>

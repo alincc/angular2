@@ -1,0 +1,68 @@
+<div class="">
+	<div class="row">
+	    <div class="content col-lg-8 col-lg-offset-2">
+	    	<h4 class="title text-center" *ngIf="!isInDashboard">
+	    		<span class="step">Step 3.</span> Verify your direct phone number
+	    	</h4>
+
+	    	<div class="text-center icon">
+				<img src="../../../assets/imgs/verify-phone-icon.png"/>
+			</div>
+
+	    	<p class="text-center reason">
+	    		This number lets you get paid for your services!<br/>
+				We keep this number private, and is NOT on your public profile.
+	    	</p>
+
+	    	<ch-alert [type]="serverMessage.type" [message]="serverMessage.message"></ch-alert>
+
+	    	<form [formGroup]="verifyPhoneForm"
+		   		(ngSubmit)="onSubmit(verifyPhoneForm.value)">
+
+		   		<div class="col-lg-12">
+		   			<div class="form-group">
+		   				<ch-phone-input
+							[formControl]="verifyPhoneForm.controls['phone']"
+							ngModel></ch-phone-input>
+	   				</div>
+		   		</div>
+
+		   		<div class="col-lg-12" *ngIf="codeSent">
+
+		   			<p>
+		   				We sent you an SMS with your verification code.
+		   				<a (click)="sendVerificationCode(verifyPhoneForm.value)"
+		   				href="javascript:void(0)">Resend.</a>
+		   			</p>
+
+		   			<div class="form-group">
+		   				<input
+		   				class="form-control"
+		   				placeholder="Type the confirmation code here"
+		   				[formControl]="verifyPhoneForm.controls['code']"
+		   				placeholder="Verification Code" />
+	   				</div>
+		   		</div>
+
+
+			   	<div class="col-lg-12">
+			   		<div class="form-group">
+						<button type="submit"
+						class="btn btn-default btn-block"
+						[message]="'Updating..'"
+						[inprogress]="submissionInprogress"
+						[disabled]="!verifyPhoneForm.valid">Verify My Phone Number</button>
+			   		</div>
+			   	</div>
+
+		   	</form>
+
+		   	<div class="clearfix"></div>
+
+		   	<div>
+		   		<p class="text-center">Have problems? <a href="mailto:support@connecthealth.io"> Contact Us.</a></p>
+		   	</div>
+	    </div>
+
+	</div>
+</div>

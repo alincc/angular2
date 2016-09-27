@@ -1,0 +1,164 @@
+@import '../assets/theme-kit/_variables';
+.addition-form{
+	position: relative;
+}
+
+.go-back{
+	position: absolute;
+    right: 0;
+    top: -20px;
+    cursor: pointer;
+}
+
+.action-block{
+	button{
+		font-size:26px;
+		a{
+			font-size:14px;
+		}
+	}
+}
+.big-action{
+	cursor:pointer;
+}
+
+.practice-list{
+	text-align:left;
+	margin-bottom: 30px;
+	.practice-item.tpl1{
+		border-bottom: 1px solid #c7d8de;
+		padding-bottom: 5px;
+		padding-top: 10px;
+		position: relative;
+		p{
+			margin-bottom: 5px;
+		}
+		&:last-child{
+			border-bottom: none;
+		}
+		.actions{
+			position: absolute;
+			right: 0;
+			top:10px;
+			.action{
+				margin-right: 5px;
+			}
+			i{
+				font-size: 20px;
+				cursor: pointer;
+				color:$ch-green;
+			}
+		}
+	}
+	.icon{
+		margin-bottom: 20px;
+		img{
+			width: 100px;
+		}
+	}
+}
+.action{
+	cursor: pointer;
+}
+
+.practice-view{
+	.big-action{
+		img{
+			height: 90px;
+		}
+	}
+}
+.action-block {
+  button {
+    font-size: 26px;
+    a {
+      font-size: 14px;
+    }
+  }
+}
+
+.big-action {
+  cursor: pointer;
+}
+
+.capsule-button {
+  border-radius: 25px;
+  padding: 5px 17px;
+
+  i {
+    font-size: 25px;
+  }
+}
+
+
+.practice-item.tpl2 {
+    border: solid 1px #c7d8de;
+    border-radius: 3px;
+    padding: 10px;
+    position: relative;
+
+    &:not(:last-child) {
+      margin-bottom: 10px
+    }
+
+    .logo {
+      float: left;
+
+      img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+
+    .description {
+      margin-left: 110px;
+      h4 {
+        margin: 0;
+      }
+
+      .position {
+        margin-top: 5px;
+        margin-bottom: 5px;
+
+        .icon-box {
+          float: left;
+          margin-right: 5px;
+        }
+      }
+
+      .appointments, .patients {
+        width: 50%;
+        float: left;
+
+        .clock {
+          float: left;
+
+          img {
+            width: 35px;
+            height: 35px;
+          }
+        }
+
+        .count {
+          float: left;
+          margin-left: 10px;
+        }
+      }
+    }
+
+    p {
+      margin: 0px;
+    }
+
+    .actions {
+      position: absolute;
+      right: 10px;
+      top: 8px;
+    }
+  }
+.icon {
+	margin-bottom: 20px;
+	img {
+	  width: 100px;
+	}
+}

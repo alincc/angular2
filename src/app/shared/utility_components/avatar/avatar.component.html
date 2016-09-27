@@ -1,0 +1,30 @@
+<div class="avatar-container" (click)="openUploadModal()">
+	<!-- Default file on display -->
+	<div *ngIf="!fileurl">
+		<img src="../../../assets/imgs/avatar-default.png"/>
+		<span class="status">
+			<i class="material-icons">add_circle</i>
+		</span>
+	</div>
+
+	<!-- Upload in progress -->
+	<div class="photo-progress" *ngIf="inProgress">
+		<div class="c100 p{{progress}}">
+		  <span>{{progress}}%</span>
+		  <div class="slice">
+		    <div class="bar"></div>
+		    <div class="fill"></div>
+		  </div>
+		</div>
+	</div>
+
+	<!-- Uploaded or being uploaded display -->
+	<div class="" *ngIf="fileurl">
+		<img [src]="fileurl"/>
+		<span class="status">
+			<i class="material-icons">add_circle</i>
+		</span>
+	</div>
+
+  <ch-img-cropper [opened]="modalOpen" (close)="closeUploadModal()" (upload)="uploadImage($event)"></ch-img-cropper>
+</div>

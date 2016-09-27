@@ -1,0 +1,16 @@
+<div chDropdown="chDropdown" [open]="open" (openChange)="openChange.emit($event)" [ngClass]="{'slds-picklist--fluid': fluid}" class="slds-picklist">
+  <button type="button" chDropdownTrigger="chDropdownTrigger" [disabled]="disabled" class="slds-button slds-button--neutral slds-picklist__label">
+    <ng-content></ng-content>
+    <!-- <svg chIcon="down" class="slds-icon"></svg> -->
+  </button>
+  <div [ngClass]="{ 'slds-p-top--none': hasFilter }" class="slds-dropdown slds-dropdown--left">
+    <input *ngIf="hasFilter" #filterInput="#filterInput" type="text" [placeholder]="filterPlaceholder" [ngModel]="filter" (ngModelChange)="filterChange($event)" (keydown.enter)="onFilterPick()" (keydown.arrowdown)="setFilterActive(1, $event)" (keydown.arrowup)="setFilterActive(-1, $event)" (focus)="onFilterFocus()" (blur)="onFilterBlur()" class="slds-input"/>
+    <ul role="menu" [ngClass]="dropdownListClass" class="dropdown__list">
+      <li *ngFor="let item of filteredData; let i = index" [chPickOption]="item" chPickActiveClass="slds-is-selected" [class.slds-is-active]="isOptionActive(i)" (mouseover)="onOptionHover(i)" class="slds-dropdown__item"><a role="menuitem" chDropdownItem="chDropdownItem">
+          <<!-- p class="slds-truncate">
+            <svg chIcon="check" class="slds-icon slds-icon--selected slds-icon--x-small slds-icon-text-default slds-m-right--x-small"></svg> -->
+            <template [ngTemplateOutlet]="itemTemplate?.templateRef" [ngOutletContext]="{$implicit: item}"></template>
+          </p></a></li>
+    </ul>
+  </div>
+</div>

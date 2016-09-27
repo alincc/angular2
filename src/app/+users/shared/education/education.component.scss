@@ -1,0 +1,83 @@
+.addition-form{
+	position: relative;
+}
+
+.go-back{
+	position: absolute;
+    right: 0;
+    top: -20px;
+    cursor: pointer;
+}
+
+.action-block{
+	button{
+		font-size:26px;
+		a{
+			font-size:14px;
+		}
+	}
+}
+.control-item{
+	padding: 0px;
+}
+.big-action{
+	cursor:pointer;
+}
+.additions{
+	.form-control{
+		border: 1px solid #c7d8de !important;
+    	background-color: #FFFFFF !important;
+	}
+
+	.icon{
+		margin-bottom: 20px;
+		img{
+			width: 120px;
+		}
+	}
+	.title{
+		margin-top: 0px;
+	}
+}
+.education-list{
+	text-align:left;
+	margin-bottom: 30px;
+	.education-item{
+		border-bottom: 1px solid #c7d8de;
+		padding-bottom: 5px;
+		padding-top: 10px;
+		position: relative;
+		p{
+			margin-bottom: 5px;
+		}
+		&:last-child{
+			border-bottom: none;
+		}
+		&:first-child{
+			padding-top: 0;
+		}
+		.actions{
+			position: absolute;
+			right: 0;
+			top:10px;
+			.action{
+				margin-right: 5px;
+			}
+			i{
+				font-size: 20px;
+				cursor: pointer;
+			}
+		}
+	}
+}
+.action{
+	cursor: pointer;
+}
+.education-view{
+	.big-action{
+		img{
+			height: 90px;
+		}
+	}
+}
+

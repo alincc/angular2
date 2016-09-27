@@ -1,0 +1,48 @@
+<div class="plain">
+	<header>
+	  	<nav class="navbar">
+	  		<div class="container">
+			    <div class="navbar-header">
+				    <a [routerLink]="['/home']" class="home-url">
+				      <span class="logo-wrap">
+				        <img src="../../../assets/ch-logo.png"/>
+				      </span>
+				    </a>
+			    </div>
+
+			    <div class="navbar-collapse collapse">
+				    <ul class="nav navbar-nav navbar-right">
+
+						<li>
+							<a [routerLink]="['/terms-of-use']">
+								Terms of use
+							</a>
+						</li>
+
+						<li>
+							<a [routerLink]="['/privacy-policy']">
+								Privacy Policy
+							</a>
+						</li>
+
+						<li *ngIf="isLogged">
+							<a [routerLink]="['/dashboard']" class="btn btn-default">
+								<i class="material-icons">account_circle</i> My Account
+							</a>
+						</li>
+
+						<li *ngIf="!isLogged">
+							<a [routerLink]="['/signup']" class="btn btn-default">
+								Signup
+							</a>
+						</li>
+		    		</ul>
+				</div>
+		    </div>
+	    </nav>
+	</header>
+
+	<div class="container">
+		<ng-content></ng-content>
+	</div>
+</div>

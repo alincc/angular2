@@ -1,0 +1,70 @@
+<div class="backdrop" (click)="select()"></div>
+<!--Nav -->
+<div class="sidebar-wrapper">
+  <nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+      <ul class="nav metismenu" id="side-menu">
+        <li class="logo-wrap">
+          <img src="../../assets/imgs/logo-white@3x.png"/>
+        </li>
+        <li class="">
+          <a href="javascript:void(0)">
+            <i class="material-icons">home</i>
+            <span class="nav-label">Home</span>
+          </a>
+        </li>
+        <li class="">
+          <a href="javascript:void(0)">
+            <i class="material-icons">forum</i>
+            <span class="nav-label">Messages</span>
+          </a>
+        </li>
+        <li class="">
+          <a href="javascript:void(0)">
+            <i class="material-icons">event_available</i>
+            <span class="nav-label">Appointments</span>
+          </a>
+        </li>
+        <li class="">
+          <a href="javascript:void(0)">
+            <i class="material-icons">people</i>
+            <span class="nav-label">Patients</span>
+          </a>
+        </li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a [routerLink]="['./profile']" (click)="select()">
+            <i class="material-icons">person</i>
+            <span class="nav-label">Profile</span>
+          </a>
+        </li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a [routerLink]="['./practices']" (click)="select()">
+            <i class="material-icons">business</i>
+            <span class="nav-label">Practices</span>
+          </a>
+        </li>
+        <li class="">
+          <a href="javascript:void(0)">
+            <i class="material-icons">brightness_7</i>
+            <span class="nav-label">Preferences</span>
+          </a>
+        </li>
+        <li class="">
+          <a href="javascript:void(0)" (click)="logout()">
+            <i class="material-icons">exit_to_app</i>
+            <span class="nav-label">Log Out</span>
+          </a>
+        </li>
+        <li class="unlock-pro-wrap">
+          <a class="unlock-pro" href="javascript:void(0)">
+            <i class="material-icons">lock_open</i>
+            <span class="nav-label">Unlock Pro</span>
+          </a>
+        </li>
+        <li class="profile-completion-state">
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+<!-- end of nav -->

@@ -1,0 +1,41 @@
+@import '../../../assets/theme-kit/_variables';
+
+.recent-updates-list {
+  text-align: left;
+  margin-bottom: 30px;
+  font-size: 94%;
+  font-weight: bold;
+  color: #75868d;
+
+  .recent-updates-item {
+
+    position: relative;
+
+    &:not(:last-child) {
+      border-bottom: solid 1px #c7d8de;
+      padding-bottom: 10px;
+      margin-bottom: 10px
+    }
+
+    .logo {
+      float: left;
+
+      img {
+        width: 42px;
+        height: auto;
+      }
+    }
+
+    .description {
+      margin-left: 70px;
+
+      p{
+        span{
+          color: #1d313c;
+          font-weight:bold;
+        };
+      }
+    }
+
+  }
+}

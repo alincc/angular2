@@ -1,0 +1,154 @@
+<noheader-layout>
+  <div class="">
+    <div class="row">
+      <div class="col-lg-12">
+        <h2 class="title text-center">Let’s Get Started!</h2>
+
+        <p class="text-center">
+          Create a free account to find and book a healthcare provider.<br/>
+          Already have a ConnectHealth account? <a [routerLink]="['/login']" class="login">Log in here.</a>
+        </p>
+        <div class="text-center">
+          <img src="../assets/imgs/doctorsimgs.png"/>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="position: relative">
+      <div class="col-lg-12 or-element">
+        <div class="content">
+          <p class="text-center title">
+            OR
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-6 col-lg-push-6">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="content">
+              <p class="text-center title">
+                Sign up with your email
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row border-left">
+          <div class="col-lg-12">
+            <div class="content">
+              <ch-alert [type]="'danger'" [message]="serverErrorMessage"></ch-alert>
+
+              <form [formGroup]="signupForm"
+                    (ngSubmit)="onSubmit(signupForm.value)"
+                    method="post">
+                <div class="row combined-controls">
+
+                  <div class="form-group col-lg-6  col-sm-6 col-md-6 col-xs-6"
+                       [ngClass]="{'has-error': !signupForm.controls['first_name'].valid && signupForm.controls['first_name'].touched}">
+
+                    <input
+                      type="text"
+                      id="firstNameInput"
+                      autocomplete="first_name"
+                      autofocus="true"
+                      class="form-control"
+                      placeholder="First name"
+                      [formControl]="signupForm.controls['first_name']">
+
+                    <p class="help-block" *ngIf="signupForm.controls['first_name'].hasError('required') && signupForm.controls['first_name'].touched">
+                      First Name is required
+                    </p>
+                  </div>
+
+
+                  <div class="form-group col-lg-6 col-sm-6 col-md-6 col-xs-6"
+                       [ngClass]="{'has-error': !signupForm.controls['last_name'].valid && signupForm.controls['last_name'].touched}">
+
+                    <input
+                      type="text"
+                      id="lastNameInput"
+                      class="form-control"
+                      autocomplete="on"
+                      placeholder="Last name"
+                      [formControl]="signupForm.controls['last_name']">
+
+                    <p class="help-block"
+                       *ngIf="signupForm.controls['last_name'].hasError('required') && signupForm.controls['last_name'].touched">
+                      Last Name is required
+                    </p>
+
+                  </div>
+                </div>
+
+                <div class="form-group"
+                     [ngClass]="{'has-error': !signupForm.controls['email'].valid && signupForm.controls['email'].touched}">
+
+                  <input
+                    type="email"
+                    id="emailInput"
+                    autocomplete="on"
+                    class="form-control"
+                    placeholder="Your email"
+                    [formControl]="signupForm.controls['email']">
+
+                  <p class="help-block" *ngIf="signupForm.controls['email'].hasError('required') && signupForm.controls['email'].touched">
+                    Email is required
+                  </p>
+                </div>
+
+                <div class="form-group"
+                     [ngClass]="{'has-error': !signupForm.controls['password'].valid && signupForm.controls['password'].touched}">
+                  <ch-show-password>
+                    <input
+                      type="password"
+                      id="passwordInput"
+                      show-password-input
+                      placeholder="Set a password"
+                      class="form-control"
+                      [formControl]="signupForm.controls['password']">
+                  </ch-show-password>
+
+                  <p *ngIf="signupForm.controls['password'].hasError('required') && signupForm.controls['password'].touched" class="help-block">
+                    password is required
+                  </p>
+                </div>
+
+                <div class="form-group">
+                  <label>
+                    By signing up, you have read and accepted our <a [routerLink]="['/terms-of-use']" target="_blank">Terms of Use</a> and <a [routerLink]="['/privacy-policy']" target="_blank">Privacy Policy</a><!--  and <a>Offer Details</a> -->
+                  </label>
+                </div>
+
+                <button type="submit" [message]="'Creating account'" [inprogress]="submissionInprogress"  class="btn btn-default btn-block" [disabled]="!signupForm.valid">Sign Up</button>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-lg-pull-6">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="content">
+              <p class="text-center title">
+                Sign up with your social network
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="content">
+              <fb-login [text]="'Sign Up With Facebook'"></fb-login>
+              <google-login [text]="'Sign Up With Google'"></google-login>
+
+              <div class="form-group">
+                <label>
+                  By signing up, you have read and accepted our <a [routerLink]="['/terms-of-use']" target="_blank">Terms of Use</a> and <a [routerLink]="['/privacy-policy']" target="_blank">Privacy Policy</a><!--  and <a>Offer Details</a> -->
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</noheader-layout>

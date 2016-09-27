@@ -1,0 +1,29 @@
+@import '../../../assets/theme-kit/_variables';
+.chips{
+	margin-bottom: 10px;
+    display:inline-block;
+    &.view{
+        .chip{
+            padding: 10px 20px;
+            border-radius: 50px;
+        }
+        button{
+        
+        }
+    }
+}
+.add-btn{
+	object-fit: contain;
+    border-radius: 50px;
+    background-color: #ffffff;
+    border: dashed 0.5px $ch-green;
+    color: $ch-green;
+    text-transform: uppercase;
+    letter-spacing: 0px;
+    font-size: 73%;
+    padding: 10px;
+    font-weight: 600;
+}
+.speciality-modal{
+    min-height: 300px;
+}

@@ -1,0 +1,44 @@
+@import '../../../assets/theme-kit/_variables';
+
+.chip a,ch-pill a {
+    text-decoration: none;
+    color: $ch-dark;
+}
+.slds-pill__label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.slds-button {
+    position: relative;
+    display: inline-block;
+    padding: 0;
+    background: 0 0;
+    background-clip: border-box;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    font-size: .75rem;
+    line-height: 1.875rem;
+    text-decoration: none;
+    color: #0070d2;
+    -webkit-appearance: none;
+    white-space: normal;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transition: color 50ms linear,background-color 50ms linear;
+    i{
+        font-size: 18px;
+    }
+}
+
+.slds-button--icon-bare {
+    line-height: 1;
+    vertical-align: middle;
+    color: #54698d;
+}
+.slds-pill__remove {
+    margin-left: .25rem;
+}

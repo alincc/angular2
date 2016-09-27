@@ -1,0 +1,43 @@
+@import '../../assets/theme-kit/_variables';
+.item{
+	margin-bottom: 40px;
+	font-size: 14px;
+	.body{
+		margin:0 auto;
+	}
+	.card{
+		min-height: 260px;
+		padding:0;
+		.content{
+			padding: 20px;
+		}
+		@include mobile{
+			padding: 10px 15px;
+		}
+	}
+}
+
+.controls{
+	>.control-item{
+		border-bottom: 1px solid $ch-main-grey;
+    	padding: 20px 0;
+	}
+}
+
+.profile {
+	.content{
+		padding-bottom: 0;
+	}
+}
+.row-major{
+	@include largescreens{
+		margin-top: 30px;
+	}
+}
+.availability-wrap{
+    padding: 0;
+    position: relative;
+    left: -5px;
+    right: 14px;
+    width: 101%;
+}

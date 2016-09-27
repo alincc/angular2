@@ -1,0 +1,90 @@
+@import '../../assets/theme-kit/_variables';
+.margin-bottom-15 {
+  margin-bottom: 15px;
+}
+
+.carousel-wrapper {
+  position: relative;
+  margin-bottom: 5px;
+  @media (max-width: 1200px) {
+    width: calc(100% - 50px);
+    margin-left: 25px;
+  }
+  .carousel-item {
+    display: none;
+    @media (min-width: 1200px) {
+      display: block;
+    }
+
+    &.current {
+      display: block;
+    }
+  }
+
+  .nav-icons {
+    @media (min-width: 1200px) {
+      display: none;
+    }
+
+    a {
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      bottom: 15px;
+      height: 35px;
+      margin: auto;
+
+      i {
+        font-size: 35px;
+      }
+    }
+
+    .left-icon-wrapper {
+      left: -25px;
+    }
+
+    .right-icon-wrapper {
+      right: -25px;
+    }
+  }
+  .card{
+    color: $ch-blue-grey;
+    box-shadow: 0 9px 16px 0 rgba(177, 195, 209, 0.66), 0 5px 0 0 #dfe6ec;
+    padding-bottom: 0px;
+    overflow: hidden;
+    height: 122px;
+    min-width: 305px;
+    .icon{
+      padding-left: 0;
+      padding-right: 0;
+      position: relative;
+      top: -7px;
+      img{
+        width:100%;
+        max-width: 76px;
+        max-height: 75px;
+        height: auto;
+      }
+    }
+    .title{
+      margin: 0;
+      margin-bottom: 7px;
+      font-size: 115%;
+      font-weight: bold;
+    }
+    p{
+      color: $ch-blue-grey;
+      font-size: 90%;
+    }
+  }
+}
+
+.practices{
+  .card{
+    .heading{
+      margin-bottom: 10px;
+    }
+  }
+}
+
+

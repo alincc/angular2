@@ -1,0 +1,128 @@
+@import 'variables';
+@import 'mixins';
+@import 'shadows';
+
+.nav-pills{
+
+    > li {
+        > a{
+            line-height: $mdb-btn-font-size-base * 2;
+            text-transform: uppercase;
+            font-size: $mdb-btn-font-size-base;
+            font-weight: $font-weight-bold;
+            min-width: 100px;
+            text-align: center;
+            color: $gray;
+            transition: all .3s;
+        }
+
+        i{
+            display: block;
+            font-size: 30px;
+            padding: 15px 0;
+        }
+
+        &.active > a{
+            &,
+            &:focus,
+            &:hover{
+                background-color: $brand-primary;
+                color: $white-color;
+                @include shadow-big();
+            }
+        }
+    }
+
+    &.nav-pills-info{
+        > li {
+            &.active > a{
+                &,
+                &:focus,
+                &:hover{
+                    background-color: $brand-info;
+                }
+            }
+        }
+    }
+
+    &.nav-pills-success{
+        > li {
+            &.active > a{
+                &,
+                &:focus,
+                &:hover{
+                    background-color: $brand-success;
+                }
+            }
+        }
+    }
+
+    &.nav-pills-warning{
+        > li {
+            &.active > a{
+                &,
+                &:focus,
+                &:hover{
+                    background-color: $brand-warning;
+                }
+            }
+        }
+    }
+
+    &.nav-pills-danger{
+        > li {
+            &.active > a{
+                &,
+                &:focus,
+                &:hover{
+                    background-color: $brand-danger;
+                }
+            }
+        }
+    }
+}
+.chips{
+    margin-bottom: 10px;
+    display:inline-block;
+    &.view{
+        .chip{
+            padding: 10px 20px;
+            border-radius: 50px;
+        }
+        button{
+            /**display:none**/
+        }
+    }
+}
+
+.chip{
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    max-width: 100%;
+    padding: .125rem;
+    border: none;
+    padding: 5px;
+    border-radius: .25rem;
+    background-color: #f6f9fb;
+    position: relative;
+    padding-left: 7px;
+    color: #000;
+    min-height: 1.625rem;
+    margin-right: 10px;
+    margin-bottom: 8px;
+    a{
+        color: $ch-dark;
+        font-weight: 600;
+    }
+    &:hover{
+       background-color: $ch-green;
+       a,i{
+        color: #fff; 
+       }
+    }
+}
+

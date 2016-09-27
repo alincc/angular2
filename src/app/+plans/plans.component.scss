@@ -1,0 +1,49 @@
+.plans-wrapper{
+  display: flex; 
+  justify-content: space-around;
+  flex-direction: row;
+  align-items:stretch;
+  margin: 0 auto;
+  width:90%;
+  padding:100px 0;
+  .title-wrap{
+  	.title{
+  		font-size: 28px;
+	    font-weight: 600;
+	    line-height:2;
+  	}
+  	.sub-title{
+  		font-size:16px;
+  		font-weight:400;
+  		border-bottom:1px solid #000;
+  		line-height:2;
+
+  	}
+  }
+  .price-title{
+  	text-align:center;
+  	padding-top:20px;
+  	.price{
+  		font-size:28px;
+  	}
+  	.price-timeline{
+  		height:50px;
+  	}
+  }
+  .action-wrap{
+  	margin-bottom: 22px;
+  	text-align:center;
+  }
+  .content{
+  	border:1px solid #000;
+  	min-height:572px;
+  	ul{
+  		li{
+  			margin-left: 0px;
+    		padding: 17px;
+  		}
+  	}
+  }
+  
+
+}

@@ -1,0 +1,32 @@
+<div class="" [class.documents-view]="isInDashboard">
+	<div class="row">
+	    <div class="content">
+
+			<div *ngIf="isInDashboard">
+				<p class="ch-label">Documents <i class="material-icons">help_outline</i></p>
+			</div>
+
+			<form [formGroup]="verificationDocsForm" 
+				(ngSubmit)="onSubmit(verificationDocsForm.value)">
+
+				<div class="controls">
+					<div class="control-item">
+						<div class="row">
+							<div class="col-lg-12" *ngFor="let control of documentsControlsSettings; let i = index;">
+
+								<ch-v-document-uploader
+								label="{{control.label}}" 
+								icon="{{control.icon}}" 
+								class="v-document-uploader"
+								(ngModelChange)="updateDoc($event)"
+								[formControl]="verificationDocsForm.controls[control.key]"
+								placeholder="{{control.placeholder}}"></ch-v-document-uploader>
+
+					   		</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

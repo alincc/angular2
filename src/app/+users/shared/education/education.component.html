@@ -1,0 +1,174 @@
+<div class="" [class.education-view]="isInDashboard">
+	<div class="">
+		<div class="">
+			<div class="education-container">
+		    	<div class="controls">
+			    	<div class="">
+				    	<div class="row">
+							<div class="col-lg-12">
+								<div class="heading">
+									<p>Education</p>
+									<i class="material-icons" (click)="openEducationModal()">add</i>
+								</div>
+
+								<div class="education-list" *ngIf="educationHistory.length > 0">
+						    		<ul class="list-unstyled">
+
+									  <li class="education-item" *ngFor="let education of educationHistory">
+									  	<p>{{education.school.data.name}} | {{education.degree}}</p>
+									  	<p>{{education.start_year}}-{{education.end_year}}</p>
+									  	<div class="actions">
+									  		<span class="action" (click)="editEducation(education)"><i class="material-icons">create</i></span>
+									  		<span class="action" (click)="deleteEducation(education.id)"><i class="material-icons">delete</i></span>
+									  	</div>
+									  </li>
+									</ul>
+						    	</div>
+
+								<div class="form-group add-btn" (click)="openEducationModal()" *ngIf="educationHistory.length == 0">
+									<p><i class="material-icons">add</i></p>
+									<p>Add New Education</p>
+					   			</div>
+					   		</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+    <ch-modal [(open)]="modalOpen">
+    	<div body class="additions">
+    		<h6 class="title text-center">Add Education</h6>
+    		<div class="icon text-center">
+    			<img src="../../../assets/imgs/education-icon.png"/>
+    		</div>
+			<a class="go-back text-danger" (click)="cancel()">
+				<i class="material-icons">clear</i>
+			</a>
+
+		    <form [formGroup]="educationAdditionForm"
+		    	(ngSubmit)="onSubmit(educationAdditionForm.value)"
+		    	method="post">
+
+				<div class="form-group row"
+					[ngClass]="{'has-error': !educationAdditionForm.controls['school_id'].valid && educationAdditionForm.controls['school_id'].touched}">
+
+					<label class="ch-label col-lg-4">School </label>
+					<div class="col-lg-8">
+						<input
+						type="text"
+						id="lastNameInput"
+						class="form-control"
+						placeholder=""
+						autofocus="true"
+						[formControl]="educationAdditionForm.controls['school_id']">
+
+						<p class="help-block"
+						*ngIf="educationAdditionForm.controls['school_id'].hasError('required') && educationAdditionForm.controls['school_id'].touched">
+							School is required
+						</p>
+					</div>
+				</div>
+
+				<div class="form-group row"
+				[ngClass]="{'has-error': (!educationAdditionForm.controls['start_year'].valid && educationAdditionForm.controls['start_year'].touched) || (!educationAdditionForm.controls['end_year'].valid && educationAdditionForm.controls['end_year'].touched) }">
+
+					<label class="ch-label col-lg-4">Dates Attended</label>
+					<div class="col-lg-8">
+						<div class="row combined-controls">
+							<div class="col-lg-6 col-sm-6 col-xs-6 form-group">
+								<input
+								type="text"
+								id="startYearInput"
+								class="form-control"
+								placeholder="From"
+								[formControl]="educationAdditionForm.controls['start_year']">
+
+								<p class="help-block" *ngIf="educationAdditionForm.controls['start_year'].hasError('required') && educationAdditionForm.controls['start_year'].touched">
+									Required
+								</p>
+								<p class="help-block" *ngIf="educationAdditionForm.controls['start_year'].hasError('pattern') && educationAdditionForm.controls['start_year'].touched">
+									Invalid year
+								</p>
+							</div>
+
+							<div class="col-lg-6 col-sm-6 col-xs-6 form-group">
+								<input
+								type="text"
+								id="endYearInput"
+								class="form-control"
+								placeholder="To"
+								[formControl]="educationAdditionForm.controls['end_year']">
+
+								<p class="help-block" *ngIf="educationAdditionForm.controls['end_year'].hasError('required') && educationAdditionForm.controls['end_year'].touched">
+									Required
+								</p>
+
+								<p class="help-block" *ngIf="educationAdditionForm.controls['end_year'].hasError('pattern') && educationAdditionForm.controls['end_year'].touched">
+									Invalid year
+								</p>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group row"
+					[ngClass]="{'has-error': !educationAdditionForm.controls['degree'].valid && educationAdditionForm.controls['degree'].touched}">
+
+						<label class="ch-label col-lg-4">Degree/ Certification </label>
+						<div class="col-lg-8">
+							<input
+							type="text"
+							id="degreeInput"
+							placeholder=""
+							class="form-control"
+							[formControl]="educationAdditionForm.controls['degree']">
+
+							<p *ngIf="educationAdditionForm.controls['degree'].hasError('required') && educationAdditionForm.controls['degree'].touched" class="help-block">
+								Degree is required
+							</p>
+						</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="ch-label col-lg-4" style="display: block;">Area of Study <br><i class="exp">Optional</i> </label>
+					<div class="col-lg-8">
+						<input
+						type="text"
+						id="areaOfStudyInput"
+						placeholder=""
+						class="form-control"
+						[formControl]="educationAdditionForm.controls['area_of_study']">
+					</div>
+				</div>
+		    </form>
+
+		    <div class="row">
+		    	<div class="col-lg-12">
+				    <div class="text-center">
+					  	<button class="btn btn-rect pull-left"
+					  	type="submit" (click)="saveAddMore()"
+					  	[message]="'Saving...'"
+					  	[inprogress]="submissionInprogress"
+					  	[disabled]="!educationAdditionForm.valid">Save and Add More</button>
+
+					  	<button class="btn btn-default pull-right"
+					  	[message]="'Saving...'"
+					  	type="submit" 
+					  	[inprogress]="submissionInprogress2"
+					  	(click)="saveAndClose()">
+					  		Save
+					  	</button>
+				  	</div>
+				</div>
+			</div>
+
+		</div>
+	</ch-modal>
+
+</div>

@@ -1,0 +1,87 @@
+@import '../../../assets/theme-kit/_variables';
+.img-cropper {
+  .no-padding {
+    padding: 0;
+  }
+
+  p.title {
+    font-weight: 600;
+  }
+
+  .result {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    min-width: 150px;
+    min-height: 150px;
+
+    div.result-background {
+      background-color: #ecf3f7;
+      width: 150px;
+      height: 150px;
+      margin: 0 auto;
+      border-radius: 75px;
+    }
+
+    img.rounded {
+      border-radius: 75px;
+    }
+  }
+
+  .result-description {
+    margin-bottom: 30px;
+  }
+
+  .no-margin {
+    margin: 0;
+  }
+
+  .save {
+    width: 140px;
+  }
+
+  .cancel {
+    position: absolute;
+    top: 11px;
+    right: 0px;
+  }
+
+  canvas {
+    background-color: #ecf3f7;
+    border-radius: 4px;
+  }
+
+  .file-upload {
+    display: inline;
+    position: relative;
+  }
+
+  .column {
+    position: relative;
+    min-height: 1px;
+    padding-bottom: 5px;
+
+    &.left-column {
+      float: left;
+      @include largescreens{
+        border-right: 1px solid #c7d8de;
+        width: 66.66666667%;
+      }
+      @include mobile{
+        float: none;
+      }
+    }
+
+    &.right-column {
+      float: left;
+      @include largescreens{
+        width: 33.33333333%;
+      }
+      @include mobile{
+        float: none;
+      }
+    }
+  }
+}
+canvas{
+  max-width: 100%;
+}

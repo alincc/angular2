@@ -1,0 +1,6 @@
+<ng-content select="[chPillImage]"></ng-content>
+<ng-content select="a"></ng-content><span *ngIf="unlinked" class="slds-pill__label">
+  <ng-content></ng-content></span>
+<button *ngIf="removable" type="button" (click)="remove()" class="slds-pill__remove slds-button slds-button--icon-bare">
+  <i class="material-icons">clear</i>
+</button>

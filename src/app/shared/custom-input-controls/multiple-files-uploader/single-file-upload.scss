@@ -1,0 +1,54 @@
+@import '../../../assets/theme-kit/_variables';
+.file-control{
+	display: flex;
+    margin-right: 30px;
+    align-items: center;
+    width: 102px;
+    text-align: center;
+    height: 102px;
+    justify-content: center;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: solid 0.5px #c7d8de;
+    cursor: pointer;
+    position: relative;
+
+    img{
+        width:100%;
+    }
+
+    .action{
+        position: absolute;
+        right: 0px;
+        top: 3px;
+        background: #fff;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        cursor: pointer;
+        /* height: 28px; */
+        /* width: 28px; */
+        display: flex;
+        align-items: center;
+        font-size: 20px;
+        i{
+            font-size: 24px;
+            color: $ch-red;
+        }
+    }
+
+    .photo-progress{
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 120;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255,255,255,0.4);
+        .c100{
+            font-size: 50px;
+        }
+    }
+}

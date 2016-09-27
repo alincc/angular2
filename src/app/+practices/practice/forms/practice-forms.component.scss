@@ -1,0 +1,66 @@
+@import '../../../assets/theme-kit/_variables';
+
+.additions, .addition-form {
+  .form-control {
+    border: 1px solid #c7d8de !important;
+    background-color: #FFFFFF !important;
+  }
+
+  .icon {
+    margin-bottom: 20px;
+    img {
+      width: 120px;
+    }
+  }
+  .explanation {
+    font-size: 90%;
+    text-align: center;
+  }
+  .blue-highlight {
+    color: $ch-blue;
+    font-weight: 600;
+  }
+  label {
+    text-align: center;
+    display: block;
+    color: lighten($ch-dark, 10%);
+  }
+  .title {
+    margin-top: 0px;
+  }
+}
+
+.overview-explanation {
+  font-size: 95%;
+  p {
+    margin-bottom: 0px;
+  }
+}
+
+.btn-cancel {
+  margin-left: 30px;
+  cursor: pointer;
+}
+
+@include lg-desktop {
+  .social-label-wrapper {
+    padding-right: 0;
+
+    text-align: right;
+
+    label {
+      padding-top: 11px;
+      padding-right: 0;
+    }
+  }
+}
+
+.text-with-warning {
+  padding-left: 40px;
+  position: relative;
+
+  i.glyphicon-alert {
+    position: absolute;
+    left: 19px;
+  }
+}

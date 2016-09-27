@@ -1,0 +1,306 @@
+@import '../../../assets/theme-kit/_variables';
+@mixin duration-slowly {
+  transition-duration: .4s;
+}
+
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin mq-medium-min {
+
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+@mixin mq-medium-max {
+
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+/*@mixin backdrop {
+  // Mixin created to not have to paste this again into the new class it's being renamed to (see below)
+  @include duration-slowly;
+  @include square(100%);
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(29,49,60, 0.8);
+  z-index: 995;
+
+  &--open {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .4s linear;
+  }
+}
+*/
+.ch-modal {
+  opacity: 0;
+  visibility: hidden;
+  transition: transform .1s linear,
+                opacity .1s linear;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: (999 + 1);
+
+  &__container {
+    position: relative;
+    transform: translate(0, 0);
+    transition: transform .1s linear,
+                  opacity .1s linear;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 2rem;
+    height: 100%;
+    padding: 3rem 0;
+    border-radius: .25rem;
+
+    @include mq-medium-min {
+      margin: 0 auto;
+      width: 50%;
+      max-width: 450px; // TODO: Tokenize
+      min-width: 20rem; // TODO: Tokenize
+    }
+  }
+
+  &__header,
+  &__content {
+    background-color: #ffffff;
+    padding: 20px;
+  }
+  &__content {
+    box-shadow: 0 5.5px 18.5px 0 rgba(28, 48, 60, 0.68);
+  }
+  &__header,
+  &__footer {
+    flex-shrink: 0;
+  }
+
+  &__header {
+    background-color: #475e6b;
+    color: #ffffff;
+    position: relative;
+    border: {
+      top: {
+        right-radius: 4px;
+        left-radius: 4px;
+      }
+    }
+    padding: 0 14px;
+    text-align: left;
+
+    + .ch-modal__menu {
+      border-top: {
+        left-radius: 0;
+        right-radius: 0;
+      }
+    }
+  }
+
+  &__header--empty {
+    padding: 0;
+    border-bottom: 0;
+  }
+
+  &__header--empty + .ch-modal__content {
+      /*border: {
+      top: {
+        right-radius: .25rem;
+        left-radius: .25rem;
+      }
+    }*/
+  }
+
+  &__content {
+    border-bottom: {
+      left-radius: 4px;
+      right-radius: 4px;
+    }
+    overflow-y: scroll;
+    overflow-x: hidden; 
+    -webkit-overflow-scrolling: touch;
+    -moz-overflow-scrolling: touch;
+    -o-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+
+    /*&:last-child {
+      border-bottom: {
+        right-radius: .25rem;
+        left-radius: .25rem;
+      }
+      box-shadow: 0 2px 3px 0 rgba(0,0,0,.16);
+    }*/
+  }
+
+  &__menu {
+    position: relative;
+    border-radius: .25rem;
+    padding: 1rem;
+    background-color: #f4f6f9;
+
+    @include mq-medium-max {
+
+      .ch-button {
+        width: 100%;
+        /**margin: $spacing-xxx-small 0;**/
+      }
+    }
+  }
+
+  &__footer {
+    border: {
+      top: 2px solid #d8dde6;
+      bottom: {
+        right-radius: .25rem;
+        left-radius: .25rem;
+      }
+    }
+    padding: .75rem 1rem;
+    background-color: #f4f6f9;
+    text-align: right;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,.16);
+
+    &--directional .ch-button:first-child {
+      float: left;
+    }
+
+    .ch-button + .ch-button {
+      /**margin-left: $spacing-x-small;**/
+    }
+  }
+
+  &__close {
+    @include square(3rem);
+    z-index: 100;
+    position: absolute;
+    top: 10px;
+    right: 6px;
+    display: inline-block;
+    padding: 0;
+    background: 0 0;
+    background-clip: border-box;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    font-size: .75rem;
+    line-height: 1.875rem;
+    text-decoration: none;
+    color: $ch-white;
+    -webkit-appearance: none;
+    white-space: normal;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transition: color 50ms linear,background-color 50ms linear;
+    i{
+      font-weight: 700;
+      &:hover{
+        color:$ch-red;
+      }
+    }
+  }
+}
+
+@mixin backdrop {
+  // Mixin created to not have to paste this again into the new class it's being renamed to (see below)
+  @include duration-slowly;
+  @include square(100%);
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(126,140,153,.8);
+  z-index: 999;
+
+  &--open {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .4s linear;
+  }
+}
+
+.ch-modal--large .ch-modal__container {
+
+  /** TODO: We'll want to readdress this to do the .99 thing**/
+  @include mq-medium-min {
+    width: 90%;
+    max-width: 605px;
+    min-width: 40rem; // TODO: Tokenize
+  }
+}
+
+.ch-modal--avatar .ch-modal__container {
+
+  /** TODO: We'll want to readdress this to do the .99 thing**/
+  @include mq-medium-min {
+    max-width: 720px;
+    min-width: 720px;
+  }
+}
+
+// old class
+.ch-modal-backdrop {
+  @include backdrop;
+}
+
+.ch-backdrop {
+  // new class
+  @include backdrop;
+}
+
+
+
+.ch-fade-in-open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .1s linear;
+
+  .ch-modal__container-reset {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, 0);
+  }
+}
+
+.ch-slide-up-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0, 0);
+  transition: opacity .1s linear,
+              transform .2s linear;
+
+  .ch-modal__container-reset {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(0, 1rem);
+    transition: opacity .2s linear,
+                transform .2s linear;
+  }
+}
+
+.ch-slide-up-saving {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0, -1rem);
+}
+
+
+.ch-slide-down-cancel {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0, 1rem);
+}

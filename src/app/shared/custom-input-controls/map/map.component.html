@@ -1,0 +1,15 @@
+<div class="map-control">
+	<input class="form-control" placeholder="Practice Location" [ngModel]="locationSearchTxt" (ngModelChange)="onLocationSearchChange($event)" id="autocomplete" autocomplete="true" />
+	<i class="material-icons">add_location</i>
+</div>
+
+<ch-modal header="Map Your Clinic" [(open)]="opened" [size]="size">
+
+  <div body>
+
+    <sebm-google-map style="height: 300px" (mapClick)="mapClicked($event)" [latitude]="location.lat" [longitude]="location.lng">
+      <sebm-google-map-marker *ngIf="marker" [latitude]="marker.lat" [longitude]="marker.lng"></sebm-google-map-marker>
+    </sebm-google-map>
+  </div>
+
+</ch-modal>

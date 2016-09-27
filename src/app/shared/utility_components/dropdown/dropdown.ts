@@ -1,0 +1,129 @@
+import {Directive, Input, Output, EventEmitter, HostBinding, HostListener, ElementRef, OnInit, OnDestroy, ContentChildren, QueryList, Renderer} from '@angular/core';
+import {ChDropdownItem} from './dropdown-item';
+import {toBoolean} from '../util/util';
+
+const openEventEmitter = new EventEmitter<any>();
+
+@Directive({
+  selector: '[chDropdown]',
+  host: {
+    '[class.slds-dropdown-trigger]': 'true',
+    '[class.slds-dropdown-trigger--click]': 'true',
+  },
+})
+export class ChDropdown implements OnInit, OnDestroy {
+  @Input('open') set isOpen(isOpen: boolean | string) {
+    isOpen = toBoolean(isOpen);
+    if (isOpen) {
+      setTimeout(() => this._subscribeToGlobalClickEvents());
+    } else {
+      this._unsubscribeFromGlobalClickEvents();
+    }
+    this._isOpen = <boolean>isOpen;
+  }
+  get isOpen() {
+    return this._isOpen;
+  }
+  @Input() handlePageEvents = true;
+  @ContentChildren(ChDropdownItem, {descendants: true}) items: QueryList<ChDropdownItem>;
+  @Output('openChange') isOpenChange = new EventEmitter<boolean>();
+  @HostBinding('class.slds-is-open')
+  @HostBinding('attr.aria-expanded')
+  get __isOpen() {
+    return this.isOpen;
+  }
+  triggerFocusEventEmitter = new EventEmitter();
+
+  private _isOpen = false;
+  private openEventSubscription: any;
+  private clickEventUnsubscriber: Function = null;
+
+  @HostListener('keydown.esc', ['"esc"'])
+  @HostListener('keydown.tab', ['"tab"'])
+
+  onKeydownClose(eventName: string) {
+    this.toggle(false,false);
+    if (eventName === 'esc') {
+      this.triggerFocusEventEmitter.emit(null);
+    }
+  }
+  @HostListener('keydown.arrowdown', ['$event', '"next"'])
+  @HostListener('keydown.arrowup', ['$event', '"previous"'])
+
+  onKeydownFocusNext($event: any, direction: 'next' | 'previous') {
+    $event.preventDefault();
+    this.focusItem(direction);
+  }
+
+  constructor(public element: ElementRef, public renderer: Renderer) {}
+
+  ngOnInit() {
+    this.openEventSubscription = openEventEmitter.subscribe(this.handleDropdownOpenEvent.bind(this));
+  }
+
+  ngOnDestroy() {
+    this.openEventSubscription.unsubscribe();
+    this._unsubscribeFromGlobalClickEvents();
+  }
+
+  toggle(toggle: boolean,focus: boolean) {
+    if(!toggle){
+      toggle = !this.isOpen;
+    }
+
+    if(!focus){
+      toggle = false;
+    }
+
+    if (toggle === this.isOpen) {
+      return;
+    }
+    this.isOpenChange.emit(toggle);
+    if (toggle) {
+      openEventEmitter.emit(this);
+      if (focus) {
+        this.focusItem('next');
+      }
+    }
+  }
+
+  handleGlobalClickEvent($event: Event) {
+    if (!this.handlePageEvents ||
+        $event.target === this.element.nativeElement || this.element.nativeElement.contains($event.target)) {
+      return;
+    }
+    this.toggle(false,false);
+  }
+
+  private _subscribeToGlobalClickEvents() {
+    if (this.handlePageEvents && this.clickEventUnsubscriber === null) {
+      this.clickEventUnsubscriber = this.renderer.listenGlobal('document', 'click', this.handleGlobalClickEvent.bind(this));
+    }
+  }
+
+  private _unsubscribeFromGlobalClickEvents() {
+    if (this.clickEventUnsubscriber !== null) {
+      this.clickEventUnsubscriber();
+      this.clickEventUnsubscriber = null;
+    }
+  }
+
+  private focusItem(direction: 'next' | 'previous') {
+    if (!this.items.length) {
+      return;
+    }
+    const items = this.items.toArray();
+    const activeElementIndex = items.findIndex(item => item.hasFocus()) + (direction === 'next' ? 1 : -1);
+    if (activeElementIndex === items.length || activeElementIndex < 0) {
+      return;
+    }
+    this.renderer.invokeElementMethod(items[activeElementIndex], 'focus', []);
+  }
+
+  private handleDropdownOpenEvent(dropdown: ChDropdown) {
+    if (dropdown !== this) {
+      this.toggle(false,false);
+    }
+  }
+
+}

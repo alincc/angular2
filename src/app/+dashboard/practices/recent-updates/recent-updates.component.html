@@ -1,0 +1,27 @@
+<div>
+  <div class="heading">
+    <h6>Recent Updates</h6>
+  </div>
+
+  <div class="recent-updates-list">
+    <ul class="list-unstyled">
+      <li class="recent-updates-item" *ngFor="let recentUpdate of recentUpdates">
+        <div class="logo" [ngSwitch]="recentUpdate.type">
+          <img *ngSwitchCase="'new-appt'" src="../../../assets/imgs/add-appt.png">
+          <img *ngSwitchCase="'new-practice'" src="../../../assets/imgs/new-practice.png">
+          <img *ngSwitchCase="'delete-practice'" src="../../../assets/imgs/delete-practice.png">
+        </div>
+        <div class="description">
+          <div>
+            <p>
+              <span>{{recentUpdate.title}} </span>
+              {{recentUpdate.description}}
+            </p>
+          </div>
+        </div>
+        <div style="clear: both"></div>
+      </li>
+    </ul>
+  </div>
+
+</div>

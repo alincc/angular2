@@ -1,0 +1,54 @@
+<div class="row carousel-wrapper">
+  <div class="nav-icons">
+    <a class="left-icon-wrapper" (click)="prev()">
+      <i class="material-icons">keyboard_arrow_left</i>
+    </a>
+    <a class="right-icon-wrapper" (click)="next()">
+      <i class="material-icons">keyboard_arrow_right</i>
+    </a>
+  </div>
+
+  <div class="col-lg-4 margin-bottom-15 carousel-item" [ngClass]="{current: currentIndex==0}">
+    <div class="body">
+      <div class="card">
+        <ch-searches-like-you></ch-searches-like-you>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4 margin-bottom-15 carousel-item" [ngClass]="{current: currentIndex==1}">
+    <div class="body">
+      <div class="card">
+        <ch-patient-volume></ch-patient-volume>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4 margin-bottom-15 carousel-item" [ngClass]="{current: currentIndex==2}">
+    <div class="body">
+      <div class="card">
+        <ch-try-front-desk></ch-try-front-desk>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+
+<div class="row">
+  <div class="col-lg-8 margin-bottom-15 practices">
+    <div class="body">
+      <div class="card">
+        <ch-practices [tpl]="'tpl2'"></ch-practices>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4 margin-bottom-15">
+    <div class="body">
+      <div class="card">
+        <ch-recent-updates></ch-recent-updates>
+      </div>
+    </div>
+  </div>
+</div>
+

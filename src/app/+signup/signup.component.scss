@@ -1,0 +1,6 @@
+@import '../assets/theme-kit/_variables';
+.login{
+	@include xsmobile{
+		display:block;
+	}
+}

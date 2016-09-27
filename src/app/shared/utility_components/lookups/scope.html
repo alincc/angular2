@@ -1,0 +1,22 @@
+<span chDropdown="chDropdown" [open]="open" (openChange)="openChange.emit($event)">
+  
+  <ng-content></ng-content>
+
+  <button chDropdownTrigger="chDropdownTrigger" 
+  class="slds-button slds-button--icon slds-button-space-left slds-shrink-none">
+    <svg chIconCategory="utility" chIcon="down" class="slds-button__icon"></svg>
+  </button>
+
+  <div *ngIf="open" class="slds-dropdown slds-dropdown--left">
+    <ul class="dropdown__list">
+      <li *ngFor="let s of scope.scopes" (click)="onScopeChange(s)" (keydown.Enter)="onScopeChange(s)" class="slds-dropdown__item">
+        <a role="menuitem" chDropdownItem="chDropdownItem">
+          <template [ngTemplateOutlet]="scope.templateRef" [ngOutletContext]="{ $implicit: s }">
+            
+          </template>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+</span>

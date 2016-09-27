@@ -1,0 +1,97 @@
+<div class="">
+
+  <div class="heading" *ngIf="tpl == 'tpl1'">
+    <p>Practices</p>
+    <i class="material-icons" (click)="openPracticeModal()">add</i>
+  </div>
+
+  <div *ngIf="tpl == 'tpl2'">
+    <button class="btn btn-default capsule-button pull-right" (click)="openPracticeModal()">
+      <i class="material-icons">add</i>
+    </button>
+    <div class="heading">
+      <h5>My Practices</h5>
+    </div>
+  </div>
+
+
+  <div class="practice-container text-center">
+
+    <div class="practice-list">
+
+      <ul class="list-unstyled" *ngIf="practices.length > 0">
+
+        <li class="practice-item" [class.tpl2]="tpl == 'tpl2'" [class.tpl1]="tpl == 'tpl1'"
+            *ngFor="let practice of practices">
+          <div *ngIf="tpl == 'tpl2'">
+            <a [routerLink]="['/dashboard/practices', practice.id]">
+              <div class="logo">
+                <img src="../assets/imgs/practice-icon.png">
+              </div>
+
+              <div class="description">
+                <div>
+                  <h4>{{practice.name}}</h4>
+                </div>
+                <div class="position" *ngIf="practice.physical_address">
+                  <p class="icon-box"><i class="glyphicon glyphicon-map-marker"></i></p>
+                  <p>{{practice.physical_address}}</p>
+                </div>
+                <div>
+                  <div class="appointments">
+                    <div class="clock">
+                      <img src="../assets/imgs/clock.png">
+                    </div>
+                    <div class="count">
+                      <p>
+                        1
+                      </p>
+                      <p>
+                        Appointments
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="patients">
+                    <div class="clock">
+                      <img src="../assets/imgs/clock.png">
+                    </div>
+                    <div class="count">
+                      <p>1</p>
+                      <p>Patient</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="actions">
+                <a (click)="editPractice(practice)">Edit</a>
+              </div>
+              <div style="clear: both"></div>
+            </a>
+          </div>
+          <div *ngIf="tpl == 'tpl1'">
+            <p><a [routerLink]="['/dashboard/practices', practice.id]">{{practice.name}}</a></p>
+            <p>{{practice.physical_address}}</p>
+            <p>{{practice.phone}}</p>
+            <div class="actions">
+              <span class="action" (click)="editPractice(practice)"><i class="material-icons">create</i></span>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="form-group add-btn" (click)="openPracticeModal()"
+           *ngIf="(practices.length == 0 && tpl == 'tpl1') || (tpl == 'tpl2')">
+        <p><i class="material-icons">add</i></p>
+        <p>Add New Practice</p>
+      </div>
+    </div>
+  </div>
+
+  <ch-practice-forms [selectedPractice]="selectedPractice" [openForm]="openPracticeForm"
+                     (formClosed)="onFormClose($event)">
+  </ch-practice-forms>
+
+
+</div>

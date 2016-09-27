@@ -1,0 +1,8 @@
+<div>
+	<ul class="file-controls-list">
+		<li *ngFor="let a of numberOfControls; let index = index" class="file-control-item">
+			<ch-single-file-uploader (fileUploaded)="onFileUploaded($event)" (fileRemoved)="removeFile($event)"></ch-single-file-uploader>
+		</li>
+	</ul>
+  <div class="clearfix"></div>
+</div>
