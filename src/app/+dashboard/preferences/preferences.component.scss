@@ -1,31 +1,121 @@
 @import '../../assets/theme-kit/_variables';
 
 .preferences {
-  table {
-    width: 100%;
+  ::-webkit-calendar-picker-indicator
+  ::-webkit-inner-spin-button,
+  ::-webkit-date-and-time-value {
+    display: none;
+  }
+  ::-webkit-input-placeholder {
+    font-weight: bold;
+    color: $blue-grey-200;
+  }
+
+  :-moz-placeholder { /* Firefox 18- */
+    font-weight: bold;
+  }
+
+  ::-moz-placeholder { /* Firefox 19+ */
+    font-weight: bold;
+  }
+
+  :-ms-input-placeholder {
+    color: red;
+  }
+  ::-ms-expand {
+    display: none;
+  }
+  input, select {
+    font-size: 18px;
+    padding-left: 36px;
+    color: $ch-dark;
+    font-weight: 600;
+  }
+  .input-wrapper {
+    &._dropdown {
+      select{
+        height: 42px;
+        padding: 3px;
+        padding-left: 12px;
+      }
+      i {
+        position: absolute;
+        right: 6px;
+        background: #FFFFFF;
+        top: 3px;
+        font-weight: 100;
+        font-size: 35px;
+        color: $blue-grey-200;
+      }
+    }
+    position: relative;
+    &:not(._dropdown) {
+      i {
+        font-weight: bold;
+        position: absolute;
+        left: 8px;
+        top: 10px;
+        color: $ch-green;
+      }
+      a {
+        font: normal 20px Cabin;
+        position: absolute;
+        right: 12px;
+        top: 10px;
+        font-weight: 100;
+      }
+    }
+  }
+  input[disabled="disabled"] {
+    background-color: $grey-50;
+    border-color: $grey-50;
+  }
+  .account-settings-row {
+    margin-bottom: 8px;
+    .prog-bar, .progress-width, .progress-txt {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .progress-width {
+      font-weight: 600;
+      padding: 0 5px;
+    }
+  }
+  .profile-picture {
+    width: 125px;
+    height: 125px;
+  }
+  .sub-title {
+    font: bold 17px Cabin;
+    text-align: left;
+    color: $p-dark-grey;
+  }
+  .btn-wrapper {
+    padding: 1px;
   }
   .btn {
-    -webkit-border-radius:4px;
-    -moz-border-radius:4px;
-    border-radius:4px;
-    width: 49%;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    width: 100%;
   }
   .btn-cancel {
     background-color: #fff;
     color: $ch-green;
   }
-  .btn-danger{
+  .btn-danger {
     background-color: #ffffff;
     color: $red-300;
     border: 2px solid $red-300;
+    min-width: 160px;
   }
-  .btn-danger:hover{
+  .btn-danger:hover {
     color: #ffffff;
     background-color: $red-300 !important;
     border: 2px solid $red-300;
-    -webkit-border-radius:2px;
-    -moz-border-radius:2px;
-    border-radius:2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
   }
 
   label {
@@ -45,7 +135,7 @@
     margin-bottom: 0;
   }
   .account-settings {
-    .profile-picture{
+    .profile-picture {
       max-width: 90px;
       max-height: 90px;
     }
@@ -65,17 +155,175 @@
     }
   }
 
-  .documents{
-    .dropzone{
+  .documents {
+    .dropzone {
+      padding: 20px;
       width: 100%;
       min-height: 100px;
-      -webkit-border-radius:2px;
-      -moz-border-radius:2px;
-      border-radius:2px;
+      -webkit-border-radius: 2px;
+      -moz-border-radius: 2px;
+      border-radius: 2px;
       border: 3px dashed $cloudy-blue;
+      text-align: center;
+      input[type=file] {
+        display: none;
+      }
+      i {
+        color: $cloudy-blue;
+        font-size: 100px;
+      }
     }
-    .photo-document{
+    .photo-document {
       max-height: 150px;
     }
   }
+  .green-txt {
+    color: $ch-green;
+  }
+  /* .slideCheckbox */
+  .slideCheckbox {
+    width: 40px;
+    height: 26px;
+    background: $ch-green;
+    position: relative;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    display: inline-block;
+    margin-right: 10px;
+    &:after {
+      content: '';
+      color: #000;
+      position: absolute;
+      right: 10px;
+      z-index: 0;
+      font: 12px/26px Arial, sans-serif;
+      font-weight: bold;
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      left: 10px;
+      z-index: 0;
+      font: 12px/26px Arial, sans-serif;
+      font-weight: bold;
+    }
+    label {
+      display: block;
+      width: 22px;
+      height: 22px;
+      cursor: pointer;
+      position: absolute;
+      top: 2px;
+      left: 3px;
+      z-index: 1;
+      background: #fcfff4;
+      -webkit-border-radius: 50px;
+      -moz-border-radius: 50px;
+      border-radius: 50%;
+      transition: all 0.4s ease;
+    }
+    input[type=checkbox] {
+      visibility: hidden;
+      &:checked + label {
+        left: 15px;
+      }
+    }
+  }
+  /* end .slideCheckbox */
+  select.form-control {
+    border: 1px solid $ch-main-grey;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+  }
+  .social-btns {
+    margin-bottom: 8px;
+    font-size: 14px;
+    .connected-user {
+      color: $ch-blue-grey;
+      margin-right: 15px;
+    }
+    button {
+      border: 0 none;
+      color: white;
+      padding: 15px;
+      text-align: left;
+      border-radius: 3px;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      font-size: 16px;
+      text-transform: capitalize;
+      min-width: 220px;
+      display: inline-block;
+      margin-right: 15px;
+      &.fb-btn {
+        background: $fb-blue;
+      }
+      &.google-btn {
+        background: $google-blue;
+      }
+    }
+  }
+  .send-email {
+    margin-bottom: 8px;
+    position: relative;
+    .rel-inp {
+      padding-right: 85px;
+    }
+    .send-btn {
+      display: inline-block;
+      background: $ch-green;
+      color: white;
+      text-align: center;
+      border: 0 none;
+      width: 80px;
+      position: absolute;
+      height: 42px;
+      border-radius: 0 3px 3px 0;
+      top: 0;
+      right: 0;
+    }
+  }
+  .copy-link {
+    position: relative;
+    .rel-inp {
+      padding-right: 85px;
+    }
+    .send-btn {
+      display: inline-block;
+      background: $ch-green;
+      color: white;
+      text-align: center;
+      border: 0 none;
+      width: 80px;
+      position: absolute;
+      height: 42px;
+      border-radius: 0 3px 3px 0;
+      top: 0;
+      right: 0;
+    }
+    img {
+      max-width: 20px;
+      position: absolute;
+      left: 13px;
+      top: 11px;
+    }
+  }
+  .drag-drop {
+    font-weight: bold;
+  }
+  .change-box {
+    border: 1px solid #f6f9fb;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    &.grey-bg {
+      background: $grey-50;
+      border: 0 none;
+    }
+  }
+
 }
